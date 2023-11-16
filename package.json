@@ -1,5 +1,5 @@
 {
-  "name": "Romeo",
+  "name": "Romeoscript",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -19,6 +19,7 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.11.0",
     "react-tilt": "^1.0.2",
+    "react-toastify": "^9.1.3",
     "react-vertical-timeline-component": "^3.6.0",
     "three": "^0.152.2",
     "use": "^3.1.1"
