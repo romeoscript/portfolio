@@ -2,11 +2,12 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { styles } from '../styles';
 import { SectionWrapper } from '../hoc';
-import romeoImg from '../assets/personal/romeo.jpeg';
+import romeoImg from '../assets/personal/main.jpg';
 import { FaGithub } from 'react-icons/fa';
 import { FaEnvelope } from 'react-icons/fa';
 import { FaLinkedin } from 'react-icons/fa';
 import { FaInstagram } from 'react-icons/fa';
+import { FaXTwitter } from 'react-icons/fa6';
 // import { FaX } from 'react-icons/fa';
 
 const BioPage = () => {
@@ -56,7 +57,6 @@ const BioPage = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white hover:text-french transition-colors text-2xl">
-                
                 <FaLinkedin />
               </a>
               <a
@@ -64,16 +64,15 @@ const BioPage = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white hover:text-french transition-colors text-2xl">
-                
                 <FaInstagram />
               </a>
               <a
-                href="https://www.x.com/romeoscript/"
+                href="https://www.x.com/romeoscript1/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white hover:text-french transition-colors text-2xl">
                 
-                {/* <FaX /> */}
+                <FaXTwitter />
               </a>
             </div>
             <p className="text-french text-[20px] font-semibold">
