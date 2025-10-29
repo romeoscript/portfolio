@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://romeoscript.com/sitemap.xml
+Sitemap: https://romeoscript.tech/sitemap.xml
 
