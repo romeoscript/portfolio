@@ -134,7 +134,7 @@ const BioPage = () => {
             </h3>
             <div className="space-y-2 text-timberWolf">
               <p><span className="text-taupe">Also Known As:</span> Romeo / Romeoscript</p>
-              <p><span className="text-taupe">Role:</span> CEO, Qubic Digital Services</p>
+              <p><span className="text-taupe">Role:</span> CEO, Qubic Digital Services | LinkedTrust</p>
               <p><span className="text-taupe">Location:</span> Nigeria / Expanding to UK</p>
               <p><span className="text-taupe">Specialization:</span> Frontend Engineering</p>
             </div>
