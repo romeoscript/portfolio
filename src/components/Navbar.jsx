@@ -36,8 +36,18 @@ const Navbar = () => {
               className={`${active === nav.title ? 'text-french' : 'text-eerieBlack'
                 } hover:text-taupe text-[21px] font-medium font-mova 
                 uppercase tracking-[3px] cursor-pointer nav-links`}
-              onClick={() => setActive(nav.title)}>
-              <a href={`#${nav.id}`}>{nav.title}</a>
+              onClick={() => {
+                setActive(nav.title);
+                if (nav.path.startsWith('/#')) {
+                  // Handle hash links - navigate to home first, then scroll
+                  window.location.href = nav.path;
+                }
+              }}>
+              {nav.path.startsWith('/#') ? (
+                <a href={nav.path}>{nav.title}</a>
+              ) : (
+                <Link to={nav.path}>{nav.title}</Link>
+              )}
             </li>
           ))}
         </ul>
@@ -70,8 +80,15 @@ const Navbar = () => {
                     onClick={() => {
                       setToggle(!toggle);
                       setActive(nav.title);
+                      if (nav.path.startsWith('/#')) {
+                        window.location.href = nav.path;
+                      }
                     }}>
-                    <a href={`#${nav.id}`}>{nav.title}</a>
+                    {nav.path.startsWith('/#') ? (
+                      <a href={nav.path}>{nav.title}</a>
+                    ) : (
+                      <Link to={nav.path}>{nav.title}</Link>
+                    )}
                   </li>
                 ))}
               </ul>
