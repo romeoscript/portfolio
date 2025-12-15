@@ -43,12 +43,14 @@ const BioPage = () => {
                 href="https://github.com/romeoscript"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Visit Romanus Chukwuemeka Ezeugwu's GitHub profile"
                 className="text-white hover:text-french transition-colors text-xl sm:text-2xl">
                 
                 <FaGithub />
               </a>
               <a
                 href="mailto:romeobourne211@gmail.com"
+                aria-label="Send email to Romanus Chukwuemeka Ezeugwu"
                 className="text-flashWhite hover:text-french transition-colors text-xl sm:text-2xl">
                 
                 <FaEnvelope />
@@ -57,6 +59,7 @@ const BioPage = () => {
                 href="https://www.linkedin.com/in/ezeugwuromanus/"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Visit Romanus Chukwuemeka Ezeugwu's LinkedIn profile"
                 className="text-white hover:text-french transition-colors text-xl sm:text-2xl">
                 <FaLinkedin />
               </a>
@@ -64,6 +67,7 @@ const BioPage = () => {
                 href="https://www.instagram.com/romeoscript1/"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Visit Romanus Chukwuemeka Ezeugwu's Instagram profile"
                 className="text-white hover:text-french transition-colors text-xl sm:text-2xl">
                 <FaInstagram />
               </a>
@@ -71,6 +75,7 @@ const BioPage = () => {
                 href="https://www.x.com/romeoscript1/"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Visit Romanus Chukwuemeka Ezeugwu's X (Twitter) profile"
                 className="text-white hover:text-french transition-colors text-xl sm:text-2xl">
                 
                 <FaXTwitter />
@@ -79,6 +84,7 @@ const BioPage = () => {
                 href="https://www.tiktok.com/@romeoscript5"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Visit Romanus Chukwuemeka Ezeugwu's TikTok profile"
                 className="text-white hover:text-french transition-colors text-xl sm:text-2xl">
                 <FaTiktok />
               </a>
