@@ -52,19 +52,46 @@
 }
 
 #about {
-  margin-left: -24px;
-  font-size: 100px;
+  margin-left: 0;
+  font-size: 48px;
 }
 
 #projects {
-  margin-left: -2px;
-  font-size: 100px;
+  margin-left: 0;
+  font-size: 48px;
 }
 
 #contact {
-  margin-left: -20px;
-  font-size: 95px;
-  letter-spacing: -2px;
+  margin-left: 0;
+  font-size: 48px;
+  letter-spacing: 0;
+}
+
+@media (min-width: 450px) {
+  #about,
+  #projects,
+  #contact {
+    font-size: 56px;
+  }
+}
+
+@media (min-width: 640px) {
+  #about,
+  #projects,
+  #contact {
+    font-size: 88px;
+    margin-left: -24px;
+  }
+  
+  #projects {
+    margin-left: -2px;
+  }
+  
+  #contact {
+    margin-left: -20px;
+    font-size: 95px;
+    letter-spacing: -2px;
+  }
 }
 
 .hero-heading {

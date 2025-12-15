@@ -8,6 +8,17 @@ const Navbar = () => {
   const [active, setActive] = useState('');
   const [toggle, setToggle] = useState(false);
 
+  useEffect(() => {
+    if (toggle) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [toggle]);
+
   return (
     <nav
       className={`${styles.paddingX} w-full flex items-center py-2 fixed 
@@ -53,13 +64,12 @@ const Navbar = () => {
         </ul>
 
         {/* mobile */}
-        <div className="sm:hidden flex flex-1 w-screen justify-end items-center">
+        <div className="sm:hidden flex flex-1 justify-end items-center">
           {toggle ? (
             <div
-              className={`p-6 bg-flashWhite opacity-[0.98] absolute 
-                top-0 left-0 w-screen h-[100vh] z-10 menu ${toggle ? 'menu-open' : 'menu-close'
-                }`}>
-              <div className="flex justify-end">
+              className={`p-4 sm:p-6 bg-flashWhite opacity-[0.98] fixed 
+                top-0 left-0 w-full h-screen z-10 overflow-y-auto`}>
+              <div className="flex justify-end mb-4">
                 <img
                   src={close}
                   alt="close"
@@ -68,15 +78,15 @@ const Navbar = () => {
                 />
               </div>
               <ul
-                className="list-none flex flex-col -gap-[1rem] 
-                items-start justify-end mt-[10rem] -ml-[35px]">
+                className="list-none flex flex-col gap-4 
+                items-start justify-start mt-8 px-4">
                 {navLinks.map((nav) => (
                   <li
                     id={nav.id}
                     key={nav.id}
                     className={`${active === nav.title ? 'text-french' : 'text-eerieBlack'
-                      } text-[88px] font-bold font-arenq 
-                      uppercase tracking-[1px] cursor-pointer`}
+                      } text-[48px] xs:text-[56px] font-bold font-arenq 
+                      uppercase tracking-[1px] cursor-pointer leading-tight`}
                     onClick={() => {
                       setToggle(!toggle);
                       setActive(nav.title);
@@ -97,7 +107,7 @@ const Navbar = () => {
             <img
               src={menu}
               alt="menu"
-              className="w-[34px] h-[34px] object-contain cursor-pointer"
+              className="w-[28px] h-[28px] sm:w-[34px] sm:h-[34px] object-contain cursor-pointer"
               onClick={() => setToggle(!toggle)}
             />
           )}
