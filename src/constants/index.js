@@ -27,6 +27,12 @@ import {
   dcc,
   kelhel,
   microverse,
+  serendptai,
+  tru,
+  noirotc,
+  gettruckdispatch,
+  getclip,
+  otaku,
 } from "../assets";
 
 export const navLinks = [
@@ -164,6 +170,138 @@ const experiences = [
 const projects = [
   {
     id: "project-1",
+    name: "GetClip",
+    description: "A fast and simple way to clip and share content from the web.",
+    tags: [
+      {
+        name: "clip",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "utility",
+        color: "green-text-gradient",
+      },
+      {
+        name: "web app",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: getclip,
+    repo: "https://github.com/",
+    demo: "https://www.getclip.app/",
+  },
+  {
+    id: "project-2",
+    name: "Otaku",
+    description: "A DeFi trading agent.",
+    tags: [
+      {
+        name: "defi",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "trading",
+        color: "green-text-gradient",
+      },
+      {
+        name: "agent",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: otaku,
+    repo: "https://github.com/",
+    demo: "https://otaku.so/",
+  },
+  {
+    id: "project-3",
+    name: "Serendptai",
+    description: "An AI-powered platform for serendipitous knowledge discovery.",
+    tags: [
+      {
+        name: "ai",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "platform",
+        color: "green-text-gradient",
+      },
+      {
+        name: "web",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: serendptai,
+    repo: "https://github.com/",
+    demo: "https://serendptai.com/",
+  },
+  {
+    id: "project-4",
+    name: "Tru Social",
+    description: "A dynamic social networking platform for engaging communities.",
+    tags: [
+      {
+        name: "social",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "network",
+        color: "green-text-gradient",
+      },
+      {
+        name: "web3",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: tru,
+    repo: "https://github.com/",
+    demo: "https://www.tru.net/",
+  },
+  {
+    id: "project-5",
+    name: "Noir OTC",
+    description: "A sleek and secure over-the-counter trading platform.",
+    tags: [
+      {
+        name: "trading",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "finance",
+        color: "green-text-gradient",
+      },
+      {
+        name: "crypto",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: noirotc,
+    repo: "https://github.com/",
+    demo: "https://noirotc.com/",
+  },
+  {
+    id: "project-6",
+    name: "Truck Dispatch",
+    description: "A comprehensive dispatch solution for modern trucking and logistics.",
+    tags: [
+      {
+        name: "logistics",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "dispatch",
+        color: "green-text-gradient",
+      },
+      {
+        name: "management",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: gettruckdispatch,
+    repo: "https://github.com/",
+    demo: "https://www.gettruckdispatch.com/",
+  },
+  {
+    id: "project-7",
     name: "Musica",
     description: "A music player ",
     tags: [
@@ -185,53 +323,7 @@ const projects = [
     demo: "https://mussicar.netlify.app",
   },
   {
-    id: "project-2",
-    name: "astro Car",
-    description:
-      "A car rental website is an online platform that allows users to rent cars for personal or business use.",
-    tags: [
-      {
-        name: "Astro",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "restapi",
-        color: "green-text-gradient",
-      },
-      {
-        name: "scss",
-        color: "pink-text-gradient",
-      },
-    ],
-    image:
-      "https://user-images.githubusercontent.com/105128267/218077675-f50ac9ae-8d2c-4196-aed8-f4490e142960.png",
-    repo: "https://github.com/romeoscript/car_sale",
-    demo: "https://astro-car.netlify.app",
-  },
-  {
-    id: "project-3",
-    name: "GPT-3 landing page",
-    description: "This is a single-page GPT_3 website  built with React",
-    tags: [
-      {
-        name: "React Js",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "supabase",
-        color: "green-text-gradient",
-      },
-      {
-        name: "css",
-        color: "pink-text-gradient",
-      },
-    ],
-    image: 'https://www.arshakir.com/uploads/projects/freebie-gpt-3-landing-page.webp',
-    repo: "https://github.com/romeoscript/gpt3-landing-page",
-    demo: "gpt3-landing-page-gamma.vercel.app",
-  },
-  {
-    id: "project-4",
+    id: "project-8",
     name: " Watch 0",
     description: `A single-page application that allows users to search for any movie or show's ratings and its details.`,
     tags: [
@@ -252,7 +344,6 @@ const projects = [
     repo: "https://github.com/romeoscript/watchO",
     demo: "https://watchoscript.vercel.app/",
   },
- 
 ];
 
 export { services, technologies, experiences, projects };

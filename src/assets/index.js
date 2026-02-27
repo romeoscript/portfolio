@@ -50,6 +50,13 @@ import movie from './projects/movie-metro.png';
 import nyeusi from './projects/nyeusi.png';
 import space from './projects/space-hub.png';
 
+import serendptai from './projects/serendptai.png';
+import tru from './projects/tru.png';
+import noirotc from './projects/noirotc.png';
+import gettruckdispatch from './projects/gettruckdispatch.png';
+import getclip from './projects/getclip.png';
+import otaku from './projects/otaku.png';
+
 export {
   bwmap,
   nairobi,
@@ -96,4 +103,10 @@ export {
   dcc,
   kelhel,
   microverse,
+  serendptai,
+  tru,
+  noirotc,
+  gettruckdispatch,
+  getclip,
+  otaku,
 };
