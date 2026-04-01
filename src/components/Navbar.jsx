@@ -29,7 +29,7 @@ const Navbar = () => {
           : 'bg-transparent'
       }`}
     >
-      <div className="flex justify-between items-center max-w-[1800px] mx-auto px-6 sm:px-16 py-5">
+      <div className="flex justify-between items-center max-w-7xl mx-auto w-full px-6 sm:px-16 py-5">
         {/* Logo */}
         <Link
           to="/"

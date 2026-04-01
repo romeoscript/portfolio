@@ -64,7 +64,7 @@ const HomePage = () => {
 
       {/* ── FOOTER ── */}
       <footer className="border-t border-white/[0.04] py-16 px-6 sm:px-16">
-        <div className="max-w-[1800px] mx-auto">
+        <div className="max-w-7xl mx-auto">
           {/* Big name */}
           <div className="font-instrument italic text-text-primary/[0.03] text-[20vw] leading-[0.85] tracking-tight select-none -mb-8 overflow-hidden">
             Romeo
