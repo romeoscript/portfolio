@@ -1,209 +1,147 @@
-import React, { useEffect, useRef } from "react";
-import { motion } from "framer-motion";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Lenis from "lenis";
-import { SectionWrapper } from "../hoc";
-import { styles } from "../styles";
-import { github, pineapple } from "../assets";
-import { projects } from "../constants";
-import { fadeIn, textVariant } from "../utils/motion";
+import React from 'react';
+import { motion } from 'framer-motion';
+import { styles } from '../styles';
+import { github, pineapple } from '../assets';
+import { projects } from '../constants';
+import { fadeIn, textVariant } from '../utils/motion';
+import { SectionWrapper } from '../hoc';
 
-gsap.registerPlugin(ScrollTrigger);
+const BentoCard = ({ name, description, image, repo, demo, index, tags }) => {
+  // Determine card size: first 2 are large, rest alternate medium/small
+  const isLarge = index < 2;
+  const isMedium = index >= 2 && index % 3 === 0;
 
-const ProjectCard = ({
-  id,
-  name,
-  description,
-  image,
-  repo,
-  demo,
-  index,
-  tags,
-}) => {
   return (
-    <div className="card-container w-full h-screen sticky top-0 flex items-center justify-center">
-      <div
-        className="card-content w-full max-w-[1000px] h-[70vh] rounded-[30px] border border-[rgba(255,255,255,0.05)] shadow-2xl relative overflow-hidden group"
-        style={{ top: `calc(-10vh + ${index * 40}px)` }}
-      >
-        {/* Full Card Image Background */}
-        <div className="absolute inset-0 w-full h-full">
-          <img
-            src={image}
-            alt={name}
-            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-          />
-          {/* Dark Gradient Overlay for Text Readability */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent z-10"></div>
-        </div>
+    <motion.div
+      variants={fadeIn('up', 'spring', 0.1 * index, 0.6)}
+      className={`bento-card ${
+        isLarge
+          ? 'col-span-1 md:col-span-2 row-span-2 min-h-[400px] md:min-h-[500px]'
+          : isMedium
+          ? 'col-span-1 md:col-span-2 min-h-[300px] md:min-h-[350px]'
+          : 'col-span-1 min-h-[300px] md:min-h-[350px]'
+      }`}
+    >
+      {/* Image */}
+      <img
+        src={image}
+        alt={name}
+        className="absolute inset-0 w-full h-full object-cover"
+      />
 
-        {/* Content Positioned Over Image */}
-        <div className="relative z-20 w-full h-full flex flex-col justify-end p-8 sm:p-12">
-          <div className="transform transition-transform duration-500 group-hover:-translate-y-4">
-            <h3 className="text-white font-bold text-[36px] sm:text-[50px] uppercase font-beckman tracking-[2px] leading-tight">
+      {/* Always-visible number + name at bottom */}
+      <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-6 z-10
+        bg-gradient-to-t from-black/80 via-black/30 to-transparent">
+        <div className="flex items-end justify-between">
+          <div>
+            <span className="text-lime/40 font-instrument italic text-[48px] sm:text-[64px] leading-none select-none block -mb-2">
+              {String(index + 1).padStart(2, '0')}
+            </span>
+            <h3 className="text-text-primary font-syne font-bold text-[18px] sm:text-[22px] tracking-wide">
               {name}
             </h3>
-            <p className="mt-4 text-silver text-[16px] sm:text-[18px] leading-[1.6] max-w-[800px] opacity-90 drop-shadow-md">
-              {description}
-            </p>
-
-            <div className="mt-6 flex flex-wrap gap-2 mb-8">
-              {tags &&
-                tags.map((tag) => (
-                  <span
-                    key={tag.name}
-                    className={`text-[13px] ${tag.color} px-3 py-1 rounded-full bg-black/40 backdrop-blur-md border border-white/10 uppercase tracking-wider font-semibold shadow-sm`}
-                  >
-                    #{tag.name}
-                  </span>
-                ))}
-            </div>
-
-            <div className="flex gap-4">
-              {repo && repo !== "https://github.com/" && (
-                <button
-                  onClick={() => window.open(repo, "_blank")}
-                  className="flex items-center gap-3 px-6 py-3 rounded-full bg-black/60 backdrop-blur-md hover:bg-white border border-white/20 hover:border-white transition-all duration-300 group/btn"
-                >
-                  <img
-                    src={github}
-                    alt="github"
-                    className="w-5 h-5 group-hover/btn:scale-110 group-hover/btn:invert transition-transform"
-                  />
-                  <span className="text-sm font-semibold tracking-wider text-white group-hover/btn:text-black transition-colors">
-                    Source Code
-                  </span>
-                </button>
-              )}
-              {demo && demo !== "https://github.com/" && (
-                <button
-                  onClick={() => window.open(demo, "_blank")}
-                  className="flex items-center gap-3 px-6 py-3 rounded-full bg-primary hover:bg-opacity-90 border border-primary transition-all duration-300 group/btn"
-                >
-                  <img
-                    src={pineapple}
-                    alt="live demo"
-                    className="w-5 h-5 group-hover/btn:scale-110 transition-transform"
-                  />
-                  <span className="text-sm font-semibold tracking-wider text-white">
-                    Visit Live Site
-                  </span>
-                </button>
-              )}
-            </div>
           </div>
         </div>
       </div>
-    </div>
+
+      {/* Hover overlay with details */}
+      <div className="bento-overlay z-20">
+        <span className="font-instrument italic text-lime/30 text-[80px] leading-none absolute top-4 right-6 select-none">
+          {String(index + 1).padStart(2, '0')}
+        </span>
+
+        <h3 className="text-text-primary font-syne font-bold text-[20px] sm:text-[24px] tracking-wide mb-2">
+          {name}
+        </h3>
+        <p className="text-text-muted text-[14px] leading-[1.6] font-syne font-light mb-4 max-w-md">
+          {description}
+        </p>
+
+        {/* Tags */}
+        <div className="flex flex-wrap gap-2 mb-5">
+          {tags?.map((tag) => (
+            <span
+              key={tag.name}
+              className="text-[10px] text-lime/70 px-3 py-1 rounded-full
+                bg-lime/[0.06] border border-lime/10
+                uppercase tracking-[2px] font-syne font-medium"
+            >
+              {tag.name}
+            </span>
+          ))}
+        </div>
+
+        {/* Links */}
+        <div className="flex gap-3">
+          {repo && repo !== 'https://github.com/' && (
+            <button
+              onClick={() => window.open(repo, '_blank')}
+              className="flex items-center gap-2 px-4 py-2 rounded-full
+                bg-white/[0.06] border border-white/10
+                hover:border-lime/30 transition-all duration-300 group/btn"
+            >
+              <img src={github} alt="github" className="w-4 h-4 invert opacity-50 group-hover/btn:opacity-100" />
+              <span className="text-[11px] font-syne font-medium tracking-[2px] text-text-muted group-hover/btn:text-text-primary uppercase">
+                Code
+              </span>
+            </button>
+          )}
+          {demo && demo !== 'https://github.com/' && (
+            <button
+              onClick={() => window.open(demo, '_blank')}
+              className="flex items-center gap-2 px-4 py-2 rounded-full
+                bg-lime/20 border border-lime/30
+                hover:bg-lime hover:text-dark transition-all duration-300 group/btn"
+            >
+              <img src={pineapple} alt="demo" className="w-4 h-4 opacity-70 group-hover/btn:opacity-100" />
+              <span className="text-[11px] font-syne font-medium tracking-[2px] text-lime group-hover/btn:text-dark uppercase">
+                Live
+              </span>
+            </button>
+          )}
+        </div>
+      </div>
+    </motion.div>
   );
 };
 
 const Projects = () => {
-  const containerRef = useRef(null);
-
-  useEffect(() => {
-    // Lenis Smooth Scroll Setup
-    const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      direction: "vertical",
-      gestureDirection: "vertical",
-      smooth: true,
-      mouseMultiplier: 1,
-      smoothTouch: false,
-      touchMultiplier: 2,
-      infinite: false,
-    });
-
-    lenis.on("scroll", ScrollTrigger.update);
-
-    gsap.ticker.add((time) => {
-      lenis.raf(time * 1000);
-    });
-
-    gsap.ticker.lagSmoothing(0);
-
-    // GSAP ScrollTrigger Stacking Setup
-    let cards = gsap.utils.toArray(".card-container");
-
-    cards.forEach((card, i) => {
-      if (i !== cards.length - 1) {
-        gsap.to(card.querySelector(".card-content"), {
-          scale: 0.9,
-          opacity: 0.5,
-          z: -100,
-          filter: "blur(10px)",
-          scrollTrigger: {
-            trigger: card,
-            start: "top top",
-            end: "bottom top",
-            scrub: true,
-          },
-        });
-      } else {
-        // Last card just fades out
-        gsap.to(card.querySelector(".card-content"), {
-          opacity: 0,
-          scale: 0.95,
-          scrollTrigger: {
-            trigger: card,
-            start: "bottom center",
-            end: "bottom top",
-            scrub: true,
-          },
-        });
-      }
-    });
-
-    return () => {
-      lenis.destroy();
-      ScrollTrigger.getAll().forEach((t) => t.kill());
-    };
-  }, []);
-
   return (
-    <div
-      className="mt-[-2rem] sm:mt-[-6rem] relative z-10 bg-night"
-      ref={containerRef}
-    >
-      <div className={`${styles.padding} max-w-7xl mx-auto relative z-20`}>
-        <motion.div
-          variants={textVariant()}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.1 }}
-        >
-          <p className={`${styles.sectionSubText} `}>Case Studies</p>
-          <h2 className={`${styles.sectionHeadTextLight}`}>Projects.</h2>
+    <div className="-mt-[2rem]">
+      {/* ── HEADER ── */}
+      <div className="flex items-end justify-between mb-4">
+        <motion.div variants={textVariant()}>
+          <p className="text-[11px] uppercase tracking-[5px] text-lime font-syne font-medium mb-3">
+            Work
+          </p>
+          <h2 className="font-instrument italic text-text-primary text-[40px] xs:text-[52px] sm:text-[64px] md:text-[80px] leading-[0.95] tracking-tight">
+            Selected projects
+          </h2>
         </motion.div>
-
-        <div className="w-full flex">
-          <motion.p
-            variants={fadeIn("", "", 0.1, 1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.1 }}
-            className="mt-4 text-taupe text-[18px] max-w-3xl leading-[30px]"
-          >
-            These projects demonstrate my expertise with practical examples of
-            some of my work, including brief descriptions and links to code
-            repositories and live demos. They showcase my ability to tackle
-            intricate challenges, adapt to various technologies, and efficiently
-            oversee projects.
-          </motion.p>
-        </div>
+        <motion.span
+          variants={fadeIn('', '', 0.2, 0.6)}
+          className="hidden sm:block font-instrument italic text-[120px] md:text-[160px] leading-none text-white/[0.02] select-none -mb-4"
+        >
+          02
+        </motion.span>
       </div>
 
-      <div className="flex flex-col w-full relative">
+      <motion.p
+        variants={fadeIn('', '', 0.1, 1)}
+        className="text-text-muted text-[16px] sm:text-[17px] max-w-2xl leading-[1.8] font-syne font-light mb-12"
+      >
+        A curated selection of projects showcasing my ability to ship
+        real products across different domains and tech stacks.
+      </motion.p>
+
+      {/* ── BENTO GRID ── */}
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-4 auto-rows-auto">
         {projects.map((project, index) => (
-          <ProjectCard key={`project-${index}`} index={index} {...project} />
+          <BentoCard key={project.id} index={index} {...project} />
         ))}
-        {/* Spacer to give the last card scroll distance */}
-        <div className="w-full h-screen"></div>
       </div>
     </div>
   );
 };
 
-export default Projects;
+export default SectionWrapper(Projects, 'projects');

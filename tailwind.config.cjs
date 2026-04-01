@@ -27,10 +27,29 @@ export default {
         richBlack: '#2e2e2e',
         eerieBlack: '#1f1f1f',
         onyx: '#5b5b5b',
+        // Kinetic palette
+        lime: '#c8ff00',
+        limeDark: '#9ecc00',
+        limeMuted: 'rgba(200, 255, 0, 0.12)',
+        dark: '#060606',
+        surface: '#111111',
+        'surface-2': '#1a1a1a',
+        'surface-3': '#222222',
+        'text-primary': '#ece7e1',
+        'text-muted': '#6b6560',
+        'text-dim': '#3d3a37',
+        cream: '#ece7e1',
+        warmGray: '#6b6560',
+        amber: '#c8ff00',
+        charcoal: '#111111',
+        graphite: '#1a1a1a',
+        muted: '#6b6560',
       },
       boxShadow: {
-        card: '0px 35px 120px -15px #1f1f1f',
-        cardLight: '0px 19px 38px #eaeaec, 0px 15px 12px #eaeaec',
+        card: '0px 35px 120px -15px #000',
+        cardLight: '0px 19px 38px #0a0a0a',
+        editorial: '0 20px 60px -10px rgba(0,0,0,0.7)',
+        glow: '0 0 60px rgba(200,255,0,0.08)',
       },
       screens: {
         xs: '450px',
@@ -43,16 +62,12 @@ export default {
         '3xl': '1800px',
       },
       backgroundImage: {
-        about:
-          'linear-gradient(165deg, rgba(244,244,246,1) 100%, rgba(122,122,122,1) 100%)',
-        experience:
-          "linear-gradient(135deg, rgba(244,244,246,0.5) 60%, rgba(10,10,10,0.2) 100%),url('/src/assets/backgrounds/white-abstract.png')",
-        experienceLight:
-          'linear-gradient(137deg, rgba(244,244,246,0.5) 60%, rgba(10,10,10,0.9) 60%)',
-        hero: 'linear-gradient(135deg, rgba(244,244,246,0.8) 60%, rgba(10,10,10,0.95) 60%)',
-        'hero-mobile':
-          'linear-gradient(137deg, rgba(244,244,246,0.8) 60%, rgba(10,10,10,1) 60%)',
-        tech: "linear-gradient(165deg, rgba(20,20,20,0.8) 100%, rgba(109,109,116,0.8) 100%), url('/src/assets/backgrounds/nairobi.png')",
+        about: 'linear-gradient(180deg, #060606 0%, #111111 100%)',
+        experience: 'linear-gradient(180deg, #111111 0%, #060606 100%)',
+        experienceLight: 'linear-gradient(180deg, #0a0a0a 0%, #060606 100%)',
+        hero: 'linear-gradient(135deg, #060606 0%, #111111 100%)',
+        'hero-mobile': 'linear-gradient(180deg, #060606 0%, #0a0a0a 100%)',
+        tech: 'linear-gradient(180deg, #060606 0%, #0a0a0a 100%)',
       },
       fontFamily: {
         arenq: ['Arenq'],
@@ -61,6 +76,8 @@ export default {
         overcameBold: ['Overcame Bold'],
         overcameOutline: ['Overcame Outline'],
         poppins: ['Poppins', 'sans-serif'],
+        syne: ['Syne', 'sans-serif'],
+        instrument: ['Instrument Serif', 'Georgia', 'serif'],
       },
     },
   },

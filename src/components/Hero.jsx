@@ -1,97 +1,144 @@
+import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
-import { styles } from '../styles';
-import { navLinks } from '../constants';
-import { shaq, bwmap, worldmap } from '../assets';
+import gsap from 'gsap';
+
+const MARQUEE_TEXT = 'FULLSTACK DEVELOPER \u00B7 CEO \u00B7 UI ENGINEER \u00B7 CREATIVE TECHNOLOGIST \u00B7 ';
 
 const Hero = () => {
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        '.hero-line',
+        { scaleX: 0 },
+        { scaleX: 1, duration: 1.5, delay: 1.8, ease: 'power3.out' }
+      );
+    }, containerRef);
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <>
-      <div className="absolute top-0 left-0 z-0 h-[100vh] w-screen">
-        <img
-          src={bwmap}
-          alt="world map"
-          className="w-full h-full sm:block hidden object-cover"
-        />
-      </div>
-      <div className="absolute top-0 left-0 z-0 h-[100vh] w-screen">
-        <img
-          src={worldmap}
-          alt="world map"
-          className="w-full h-full sm:hidden block object-cover"
-        />
-      </div>
-      <section
-        className="relative flex sm:flex-row flex-col w-full h-screen mx-auto 
-        sm:bg-hero bg-hero-mobile overflow-hidden">
-        <div
-          className={`absolute inset-0 sm:top-[250px] top-[150px] 
-          lg:top-[150px] xl:top-[250px] ${styles.paddingX} 
-          max-w-7xl mx-auto flex flex-row items-start
-          justify-between gap-3`}>
-          <div className="flex flex-col justify-center items-center mt-5 ml-3">
-            <div className="w-5 h-5 rounded-full bg-[#0a0a0a] sm:hidden" />
-            <div className="w-1 sm:h-80 h-40 bw-gradient sm:hidden" />
-          </div>
+    <section
+      ref={containerRef}
+      className="relative w-full min-h-screen flex flex-col justify-between overflow-hidden bg-dark"
+    >
+      {/* Background grid */}
+      <div
+        className="absolute inset-0 opacity-[0.03]"
+        style={{
+          backgroundImage:
+            'linear-gradient(rgba(200,255,0,0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(200,255,0,0.4) 1px, transparent 1px)',
+          backgroundSize: '60px 60px',
+        }}
+      />
 
-          <div>
-            <h1
-              className={`${styles.heroHeadText} text-eerieBlack font-poppins uppercase`}>
-              Hi, I'm{' '}
-              <span
-                className="sm:text-battleGray sm:text-[90px] 
-                text-eerieBlack text-[50px] font-mova
-                font-extrabold uppercase">
-                Romeo
-              </span>
-            </h1>
-            <p className={`${styles.heroSubText} mt-2 text-eerieBlack`}>
-              I'm currently a Full Stack Developer <br className="sm:block hidden" />
-              seeking many ways to improve my skills through problem-solving and creating various projects! Scroll down to learn more about me.
-            </p>
-          </div>
-          <div
-            className="w-screen flex flex-col items-start 
-            justify-center sm:-ml-[3rem] xxs:mt-4"></div>
+      {/* Corner accent */}
+      <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-lime/[0.03] rounded-full blur-[120px] translate-x-1/2 -translate-y-1/2" />
 
-          <div></div>
+      {/* ── TOP BAR ── */}
+      <div className="relative z-10 flex justify-between items-center px-6 sm:px-16 pt-28 sm:pt-32">
+        <motion.p
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="text-[11px] sm:text-[13px] uppercase tracking-[5px] text-text-muted font-syne"
+        >
+          Portfolio / 2024
+        </motion.p>
+        <motion.div
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="flex items-center gap-2"
+        >
+          <span className="w-2 h-2 rounded-full bg-lime animate-pulse" />
+          <span className="text-[11px] sm:text-[13px] uppercase tracking-[5px] text-text-muted font-syne">
+            Open to work
+          </span>
+        </motion.div>
+      </div>
+
+      {/* ── MAIN NAME ── */}
+      <div className="relative z-10 flex-1 flex flex-col justify-center px-6 sm:px-16 -mt-8">
+        {/* First name */}
+        <div className="overflow-hidden">
+          <motion.h1
+            initial={{ y: '110%' }}
+            animate={{ y: 0 }}
+            transition={{ duration: 1.2, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            className="font-instrument text-text-primary font-normal
+              text-[16vw] sm:text-[14vw] md:text-[12vw] lg:text-[10vw]
+              leading-[0.85] tracking-[-0.04em]"
+          >
+            Romeo
+          </motion.h1>
         </div>
 
+        {/* Last name - offset right */}
+        <div className="overflow-hidden sm:ml-[15vw] md:ml-[20vw]">
+          <motion.h1
+            initial={{ y: '110%' }}
+            animate={{ y: 0 }}
+            transition={{ duration: 1.2, delay: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            className="font-instrument italic text-lime
+              text-[16vw] sm:text-[14vw] md:text-[12vw] lg:text-[10vw]
+              leading-[0.85] tracking-[-0.04em]"
+          >
+            Ezeugwu
+          </motion.h1>
+        </div>
+
+        {/* Divider line */}
         <div
-          className="absolute xs:bottom-10 bottom-32 w-full 
-          flex justify-center items-center">
-          <a href="#about">
-            <div
-              className="w-[35px] h-[64px] rounded-3xl border-4 
-            border-french border-dim flex
-            justify-center items-start p-2">
-              <motion.div
-                animate={{
-                  y: [0, 24, 0],
-                }}
-                transition={{
-                  duration: 1.5,
-                  repeat: Infinity,
-                  repeatType: 'loop',
-                }}
-                className="w-3 h-3 rounded-full bg-taupe mb-1"
-              />
-            </div>
+          className="hero-line mt-10 h-[1px] bg-gradient-to-r from-lime/40 via-lime/20 to-transparent origin-left"
+        />
+
+        {/* Subtitle row */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 1.4 }}
+          className="mt-8 flex flex-col sm:flex-row sm:items-end justify-between gap-6"
+        >
+          <p className="text-text-muted text-[15px] sm:text-[17px] leading-[1.7] max-w-lg font-syne font-light">
+            Building digital products that live at the intersection of
+            <span className="text-text-primary"> engineering</span>,
+            <span className="text-text-primary"> design</span>, and
+            <span className="text-lime"> business strategy</span>.
+          </p>
+
+          <a
+            href="#about"
+            className="group inline-flex items-center gap-3 text-[12px] uppercase tracking-[4px] text-text-muted hover:text-lime transition-colors font-syne"
+          >
+            Scroll down
+            <svg className="w-4 h-4 rotate-90 group-hover:translate-y-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
           </a>
-        </div>
+        </motion.div>
+      </div>
 
-        {/* Your image comes here. Feel free to remove image if you don't plan to have one.*/}
-        <div>
-          <img
-            className="absolute bottom-0 ml-[50vw] hidden 
-            lg:ml-[75vw] md:ml-[60vw] xmd:ml-[60vw] 2xl:ml-[83vw]
-            sm:h-[90vh] md:h-[70vh] xl:h-[80vh]"
-            src={shaq}
-            alt="shaquille"
-          />
+      {/* ── BOTTOM MARQUEE ── */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8, delay: 2 }}
+        className="relative z-10 border-t border-white/[0.04] py-4 overflow-hidden"
+      >
+        <div className="marquee-track">
+          {[...Array(4)].map((_, i) => (
+            <span
+              key={i}
+              className="text-[11px] uppercase tracking-[6px] text-text-dim font-syne whitespace-nowrap px-4"
+            >
+              {MARQUEE_TEXT}
+            </span>
+          ))}
         </div>
-      </section>
-    </>
+      </motion.div>
+    </section>
   );
 };
 

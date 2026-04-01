@@ -1,132 +1,126 @@
-import {
-  VerticalTimeline,
-  VerticalTimelineElement,
-} from 'react-vertical-timeline-component';
 import { motion } from 'framer-motion';
-import 'react-vertical-timeline-component/style.min.css';
-import { styles } from '../styles';
 import { experiences } from '../constants';
 import { SectionWrapper } from '../hoc';
 import { download, downloadHover, resume } from '../assets';
-import { textVariant } from '../utils/motion';
+import { fadeIn, textVariant } from '../utils/motion';
 
-const ExperienceCard = ({ experience }) => (
-  <VerticalTimelineElement
-    contentStyle={{
-      background: '#eaeaec',
-      color: '#292929',
-      boxShadow:
-        'rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px',
-    }}
-    contentArrowStyle={{
-      borderRight: '7px solid  #232631',
-    }}
-    date={
-      <div>
-        <h3 className="text-dim text-[18px] font-bold font-beckman">
-          {experience.date}
-        </h3>
+const ExperienceRow = ({ experience, index }) => {
+  // Extract year from date string
+  const year = experience.date.match(/\d{4}/)?.[0] || '';
+
+  return (
+    <motion.div
+      variants={fadeIn('up', 'spring', 0.15 * index, 0.6)}
+      className="exp-row group cursor-default"
+    >
+      <div className="grid grid-cols-12 items-center gap-4 px-4 sm:px-8 py-7 sm:py-9">
+        {/* Number */}
+        <div className="col-span-1 hidden sm:block">
+          <span className="text-text-dim text-[13px] font-syne font-medium">
+            0{index + 1}
+          </span>
+        </div>
+
+        {/* Icon */}
+        <div className="col-span-2 sm:col-span-1">
+          <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-surface-2 border border-white/[0.04] flex items-center justify-center
+            group-hover:border-lime/20 transition-colors">
+            <img
+              src={experience.icon}
+              alt={experience.company_name}
+              className="w-6 h-6 sm:w-7 sm:h-7 object-contain"
+            />
+          </div>
+        </div>
+
+        {/* Title & Company */}
+        <div className="col-span-6 sm:col-span-5">
+          <h3 className="text-text-primary text-[16px] sm:text-[18px] font-syne font-bold tracking-wide">
+            {experience.title}
+          </h3>
+          <p className="text-text-muted text-[13px] sm:text-[14px] font-syne mt-0.5">
+            {experience.company_name}
+          </p>
+        </div>
+
+        {/* Date */}
+        <div className="col-span-4 sm:col-span-4 text-right sm:text-left">
+          <span className="font-instrument italic text-text-dim text-[28px] sm:text-[36px] leading-none
+            group-hover:text-lime/40 transition-colors duration-300">
+            {year}
+          </span>
+          <p className="text-text-dim text-[11px] uppercase tracking-[2px] font-syne mt-1 hidden sm:block">
+            {experience.date}
+          </p>
+        </div>
+
+        {/* Arrow */}
+        <div className="col-span-1 hidden sm:flex justify-end">
+          <svg className="exp-arrow w-5 h-5 text-lime" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 17L17 7M17 7H7M17 7v10" />
+          </svg>
+        </div>
       </div>
-    }
-    iconStyle={{ background: experience.iconBg }}
-    icon={
-      <div className="flex justify-center items-center w-full h-full">
-        <img
-          src={experience.icon}
-          alt={experience.company_name}
-          className="w-[60%] h-[60%] object-contain"
-        />
-      </div>
-    }>
-    <div>
-      <h3 className="text-jetLight text-[24px] font-bold font-beckman tracking-[2px]">
-        {experience.title}
-      </h3>
-      <p
-        className="text-taupe text-[22px] font-semibold font-overcameBold tracking-[1px]"
-        style={{ margin: 0 }}>
-        {experience.company_name}
-      </p>
-    </div>
-  </VerticalTimelineElement>
-);
+    </motion.div>
+  );
+};
 
 const Experience = () => {
   return (
     <>
-      <motion.div variants={textVariant()}>
-        <p className={`${styles.sectionSubText} sm:pl-16 pl-[2rem]`}>
-          What I've done so far
-        </p>
-        <h2 className={`${styles.sectionHeadText} sm:pl-16 pl-[2rem]`}>
-          Work Experience.
-        </h2>
-      </motion.div>
-
-      <div className="mt-20 flex flex-col">
-        <VerticalTimeline className="vertical-timeline-custom-line">
-          {experiences.map((experience, index) => (
-            <ExperienceCard key={index} experience={experience} />
-          ))}
-          <VerticalTimelineElement
-            contentStyle={{
-              background: '#eaeaec',
-              color: '#292929',
-              boxShadow:
-                'rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px',
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}
-            contentArrowStyle={{
-              borderRight: '7px solid  #232631',
-            }}
-            iconStyle={{ background: '#333333' }}
-            icon={
-              <div className="flex justify-center items-center w-full h-full">
-                <img
-                  src={resume}
-                  alt="resume"
-                  className="w-[45%] h-[45%] object-contain"
-                />
-              </div>
-            }>
-            <button
-              className="live-demo flex justify-between 
-              sm:text-[18px] text-[14px] text-timberWolf 
-              font-bold font-beckman items-center py-5 pl-3 pr-3 
-              whitespace-nowrap gap-1 sm:w-[148px] sm:h-[58px] 
-              w-[125px] h-[46px] rounded-[10px] bg-jetLight 
-              sm:mt-[22px] mt-[16px] hover:bg-battleGray 
-              hover:text-eerieBlack transition duration-[0.2s] 
-              ease-in-out"
-              onClick={() =>
-                window.open(
-                  'resume.pdf', //paste the link to your resume here
-                  '_blank'
-                )
-              }
-              onMouseOver={() => {
-                document
-                  .querySelector('.download-btn')
-                  .setAttribute('src', downloadHover);
-              }}
-              onMouseOut={() => {
-                document
-                  .querySelector('.download-btn')
-                  .setAttribute('src', download);
-              }}>
-              MY RESUME
-              <img
-                src={download}
-                alt="download"
-                className="download-btn sm:w-[26px] sm:h-[26px] 
-                w-[23px] h-[23px] object-contain"
-              />
-            </button>
-          </VerticalTimelineElement>
-        </VerticalTimeline>
+      {/* ── HEADER ── */}
+      <div className="flex items-end justify-between mb-16">
+        <motion.div variants={textVariant()}>
+          <p className="text-[11px] uppercase tracking-[5px] text-lime font-syne font-medium mb-3">
+            Career
+          </p>
+          <h2 className="font-instrument italic text-text-primary text-[40px] xs:text-[52px] sm:text-[64px] md:text-[80px] leading-[0.95] tracking-tight">
+            Experience
+          </h2>
+        </motion.div>
+        <motion.span
+          variants={fadeIn('', '', 0.2, 0.6)}
+          className="hidden sm:block font-instrument italic text-[120px] md:text-[160px] leading-none text-white/[0.02] select-none -mb-4"
+        >
+          03
+        </motion.span>
       </div>
+
+      {/* ── EXPERIENCE ROWS ── */}
+      <div className="border-t border-white/[0.06] rounded-2xl overflow-hidden">
+        {experiences.map((exp, index) => (
+          <ExperienceRow key={index} experience={exp} index={index} />
+        ))}
+      </div>
+
+      {/* ── RESUME CTA ── */}
+      <motion.div
+        variants={fadeIn('up', 'spring', 0.6, 0.6)}
+        className="mt-12 flex items-center gap-6"
+      >
+        <button
+          className="group flex items-center gap-3 px-6 py-3.5 rounded-full
+            bg-lime text-dark font-syne font-bold text-[13px] uppercase tracking-[2px]
+            hover:bg-text-primary transition-colors duration-300"
+          onClick={() => window.open('resume.pdf', '_blank')}
+          onMouseOver={() => {
+            document.querySelector('.download-btn')?.setAttribute('src', downloadHover);
+          }}
+          onMouseOut={() => {
+            document.querySelector('.download-btn')?.setAttribute('src', download);
+          }}
+        >
+          Download Resume
+          <img
+            src={download}
+            alt="download"
+            className="download-btn w-5 h-5 object-contain"
+          />
+        </button>
+        <span className="text-text-dim text-[12px] font-syne tracking-wide hidden sm:block">
+          PDF, updated 2024
+        </span>
+      </motion.div>
     </>
   );
 };

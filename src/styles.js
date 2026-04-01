@@ -18,18 +18,18 @@ const styles = {
   padding: 'sm:px-16 px-6 sm:py-16 py-10',
 
   heroHeadText:
-    'font-black text-eerieBlack lg:text-[80px] sm:text-[60px] xs:text-[50px] text-[40px] lg:leading-[90px] mt-2',
+    'font-black lg:text-[96px] sm:text-[72px] xs:text-[56px] text-[44px] lg:leading-[100px] mt-2',
   heroSubText:
-    'text-eerieBlack font-medium lg:text-[30px] sm:text-[26px] xs:text-[20px] text-[16px] lg:leading-[40px]',
+    'font-light lg:text-[22px] sm:text-[20px] xs:text-[18px] text-[15px] lg:leading-[36px] tracking-wide',
 
   sectionHeadText:
-    'text-eerieBlack font-black md:text-[60px] sm:text-[48px] xs:text-[40px] text-[30px] font-poppins',
+    'font-black md:text-[60px] sm:text-[48px] xs:text-[40px] text-[30px]',
   sectionHeadTextLight:
-    'text-timberWolf font-black md:text-[60px] sm:text-[48px] xs:text-[40px] text-[30px] font-poppins',
+    'font-black md:text-[60px] sm:text-[48px] xs:text-[40px] text-[30px]',
   sectionSubText:
-    'sm:text-[18px] text-[16px] text-taupe uppercase tracking-wider font-semibold font-poppins',
+    'sm:text-[13px] text-[11px] uppercase tracking-[5px] font-medium',
   sectionSubTextLight:
-    'sm:text-[18px] text-[16px] text-taupe uppercase tracking-wider font-semibold font-poppins',
+    'sm:text-[13px] text-[11px] uppercase tracking-[5px] font-medium',
 };
 
 export { styles };
