@@ -44,6 +44,13 @@ export default {
         charcoal: '#111111',
         graphite: '#1a1a1a',
         muted: '#6b6560',
+        // Monochrome system
+        ink: '#050505',
+        'ink-2': '#0a0a0a',
+        'ink-3': '#111111',
+        bone: '#f0f0f0',
+        ash: '#888888',
+        smoke: '#555555',
       },
       boxShadow: {
         card: '0px 35px 120px -15px #000',
@@ -78,6 +85,12 @@ export default {
         poppins: ['Poppins', 'sans-serif'],
         syne: ['Syne', 'sans-serif'],
         instrument: ['Instrument Serif', 'Georgia', 'serif'],
+        display: ['Space Grotesk', 'sans-serif'],
+        body: ['Inter', 'sans-serif'],
+      },
+      transitionTimingFunction: {
+        'out-expo': 'cubic-bezier(0.23, 1, 0.32, 1)',
+        'in-out-expo': 'cubic-bezier(0.86, 0, 0.07, 1)',
       },
     },
   },

@@ -1,128 +1,121 @@
-import { motion } from 'framer-motion';
 import { experiences } from '../constants';
-import { SectionWrapper } from '../hoc';
-import { download, downloadHover, resume } from '../assets';
-import { fadeIn, textVariant } from '../utils/motion';
+import SectionLabel from './fx/SectionLabel';
+import Magnetic from './fx/Magnetic';
 
-const ExperienceRow = ({ experience, index }) => {
-  // Extract year from date string
-  const year = experience.date.match(/\d{4}/)?.[0] || '';
+const Experience = () => (
+  <section
+    id="career"
+    className="relative py-28 sm:py-36 px-6 sm:px-12 border-t border-white/[0.06]"
+  >
+    <SectionLabel index="06" title="Career" />
 
-  return (
-    <motion.div
-      variants={fadeIn('up', 'spring', 0.15 * index, 0.6)}
-      className="exp-row group cursor-default"
-    >
-      <div className="grid grid-cols-12 items-center gap-4 px-4 sm:px-8 py-7 sm:py-9">
-        {/* Number */}
-        <div className="col-span-1 hidden sm:block">
-          <span className="text-text-dim text-[13px] font-syne font-medium">
-            0{index + 1}
-          </span>
-        </div>
+    <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-16 md:gap-20 items-start">
+      {/* Sticky column */}
+      <div className="md:w-[35%] md:sticky md:top-[20vh]">
+        <p className="text-[10px] uppercase tracking-[0.35em] text-smoke font-display mb-6">
+          Career
+        </p>
+        <h2 className="font-display font-bold text-bone text-[13vw] md:text-[5vw] leading-[0.88] tracking-tighter mb-8">
+          Where
+          <br />
+          I've built
+        </h2>
 
-        {/* Icon */}
-        <div className="col-span-2 sm:col-span-1">
-          <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-surface-2 border border-white/[0.04] flex items-center justify-center
-            group-hover:border-lime/20 transition-colors">
-            <img
-              src={experience.icon}
-              alt={experience.company_name}
-              className="w-6 h-6 sm:w-7 sm:h-7 object-contain"
-            />
-          </div>
-        </div>
-
-        {/* Title & Company */}
-        <div className="col-span-6 sm:col-span-5">
-          <h3 className="text-text-primary text-[16px] sm:text-[18px] font-syne font-bold tracking-wide">
-            {experience.title}
-          </h3>
-          <p className="text-text-muted text-[13px] sm:text-[14px] font-syne mt-0.5">
-            {experience.company_name}
-          </p>
-        </div>
-
-        {/* Date */}
-        <div className="col-span-4 sm:col-span-4 text-right sm:text-left">
-          <span className="font-instrument italic text-text-dim text-[28px] sm:text-[36px] leading-none
-            group-hover:text-lime/40 transition-colors duration-300">
-            {year}
-          </span>
-          <p className="text-text-dim text-[11px] uppercase tracking-[2px] font-syne mt-1 hidden sm:block">
-            {experience.date}
-          </p>
-        </div>
-
-        {/* Arrow */}
-        <div className="col-span-1 hidden sm:flex justify-end">
-          <svg className="exp-arrow w-5 h-5 text-lime" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 17L17 7M17 7H7M17 7v10" />
-          </svg>
-        </div>
-      </div>
-    </motion.div>
-  );
-};
-
-const Experience = () => {
-  return (
-    <>
-      {/* ── HEADER ── */}
-      <div className="flex items-end justify-between mb-16">
-        <motion.div variants={textVariant()}>
-          <p className="text-[11px] uppercase tracking-[5px] text-lime font-syne font-medium mb-3">
-            Career
-          </p>
-          <h2 className="font-instrument italic text-text-primary text-[40px] xs:text-[52px] sm:text-[64px] md:text-[80px] leading-[0.95] tracking-tight">
-            Experience
-          </h2>
-        </motion.div>
-        <motion.span
-          variants={fadeIn('', '', 0.2, 0.6)}
-          className="hidden sm:block font-instrument italic text-[120px] md:text-[160px] leading-none text-white/[0.02] select-none -mb-4"
-        >
-          03
-        </motion.span>
-      </div>
-
-      {/* ── EXPERIENCE ROWS ── */}
-      <div className="border-t border-white/[0.06] rounded-2xl overflow-hidden">
-        {experiences.map((exp, index) => (
-          <ExperienceRow key={index} experience={exp} index={index} />
-        ))}
-      </div>
-
-      {/* ── RESUME CTA ── */}
-      <motion.div
-        variants={fadeIn('up', 'spring', 0.6, 0.6)}
-        className="mt-12 flex items-center gap-6"
-      >
-        <button
-          className="group flex items-center gap-3 px-6 py-3.5 rounded-full
-            bg-lime text-dark font-syne font-bold text-[13px] uppercase tracking-[2px]
-            hover:bg-text-primary transition-colors duration-300"
-          onClick={() => window.open('resume.pdf', '_blank')}
-          onMouseOver={() => {
-            document.querySelector('.download-btn')?.setAttribute('src', downloadHover);
-          }}
-          onMouseOut={() => {
-            document.querySelector('.download-btn')?.setAttribute('src', download);
-          }}
-        >
-          Download Resume
-          <img
-            src={download}
-            alt="download"
-            className="download-btn w-5 h-5 object-contain"
+        <svg width="110" height="110" viewBox="0 0 100 100" className="mb-8" aria-hidden="true">
+          <circle
+            cx="50"
+            cy="50"
+            r="45"
+            stroke="rgba(255,255,255,0.35)"
+            strokeWidth="1"
+            fill="none"
+            className="draw-path"
           />
-        </button>
-        <span className="text-text-dim text-[12px] font-syne tracking-wide hidden sm:block">
-          PDF, updated 2024
-        </span>
-      </motion.div>
-    </>
-  );
-};
+          <path
+            d="M30 50 L45 65 L72 33"
+            stroke="#f0f0f0"
+            strokeWidth="1.5"
+            fill="none"
+            className="draw-path"
+            style={{ transitionDelay: '0.5s' }}
+          />
+        </svg>
 
-export default SectionWrapper(Experience, 'work');
+        <p className="text-ash text-[15px] leading-[1.8] font-light max-w-sm mb-10">
+          Seven years shipping production systems — AI platforms, telecom
+          infrastructure, federal data pipelines and healthtech.
+        </p>
+
+        <Magnetic strength={0.25}>
+          <button
+            type="button"
+            onClick={() => window.open('/Romanus_Ezeugwu_CV.pdf', '_blank')}
+            className="inline-flex items-center gap-3 px-7 py-3.5 rounded-full bg-white text-black font-display font-bold text-[11px] uppercase tracking-[0.2em] hover:bg-ash transition-colors"
+          >
+            Download résumé
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={1.5}
+                d="M12 4v12m0 0l-4-4m4 4l4-4M4 20h16"
+              />
+            </svg>
+          </button>
+        </Magnetic>
+      </div>
+
+      {/* Rows */}
+      <div className="md:w-[65%] w-full md:pt-6">
+        <div className="border-t border-white/[0.08]">
+          {experiences.map((experience, index) => {
+            const year = experience.date.match(/\d{4}/)?.[0] || '';
+
+            return (
+              <div
+                key={`${experience.company_name}-${index}`}
+                className="reveal-item fade-up group border-b border-white/[0.08] hoverable"
+                style={{ transitionDelay: `${index * 0.1}s` }}
+              >
+                <div className="flex items-center gap-5 sm:gap-8 py-8 sm:py-10 px-2 sm:px-4 transition-colors duration-500 group-hover:bg-white/[0.03]">
+                  <span className="hidden sm:block text-smoke text-[11px] font-display w-6 shrink-0">
+                    0{index + 1}
+                  </span>
+
+                  <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-lg border border-white/10 flex items-center justify-center shrink-0 bg-ink-3 group-hover:border-white/30 transition-colors duration-500">
+                    <span className="font-display font-bold text-[11px] tracking-tight text-ash group-hover:text-bone transition-colors duration-500">
+                      {experience.short}
+                    </span>
+                  </div>
+
+                  <div className="flex-1 min-w-0">
+                    <h3 className="font-display font-bold text-bone text-[15px] sm:text-[19px] tracking-tight truncate">
+                      {experience.title}
+                    </h3>
+                    <p className="text-ash text-[12px] sm:text-[14px] font-light mt-0.5 truncate">
+                      {experience.company_name}
+                      {experience.location && (
+                        <span className="text-smoke"> · {experience.location}</span>
+                      )}
+                    </p>
+                  </div>
+
+                  <div className="text-right shrink-0">
+                    <span className="font-display font-bold text-[26px] sm:text-[34px] leading-none tracking-tighter text-white/15 group-hover:text-white/60 transition-colors duration-500">
+                      {year}
+                    </span>
+                    <p className="hidden sm:block text-smoke text-[10px] uppercase tracking-[0.15em] font-display mt-1.5">
+                      {experience.date}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  </section>
+);
+
+export default Experience;

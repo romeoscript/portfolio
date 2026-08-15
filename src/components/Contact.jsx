@@ -1,24 +1,44 @@
-import { useState, useRef } from 'react';
-import { motion } from 'framer-motion';
+import { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
-import { SectionWrapper } from '../hoc';
-import { slideIn, fadeIn } from '../utils/motion';
-import { send, sendHover } from '../assets';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import SectionLabel from './fx/SectionLabel';
+import ParticleField from './fx/ParticleField';
+import Magnetic from './fx/Magnetic';
+
+const TOAST_STYLE = {
+  background: '#fff',
+  color: '#000',
+  fontFamily: 'Space Grotesk, sans-serif',
+  fontSize: '14px',
+  borderRadius: '8px',
+};
+
+const DETAILS = [
+  {
+    label: 'Email',
+    value: 'romeobourne211@gmail.com',
+    href: 'mailto:romeobourne211@gmail.com',
+  },
+  { label: 'Location', value: 'Lagos, Nigeria' },
+  {
+    label: 'GitHub',
+    value: 'github.com/romeoscript',
+    href: 'https://github.com/romeoscript',
+  },
+];
 
 const Contact = () => {
-  const formRef = useRef();
+  const formRef = useRef(null);
   const [form, setForm] = useState({ name: '', email: '', message: '' });
   const [loading, setLoading] = useState(false);
 
-  const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
+  const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
+
     emailjs
       .send(
         'service_11syakg',
@@ -35,177 +55,153 @@ const Contact = () => {
       .then(
         () => {
           setLoading(false);
-          toast.success('Message sent! I\'ll get back to you soon.', {
-            style: { background: '#111', color: '#ece7e1', border: '1px solid rgba(200,255,0,0.2)' },
-          });
+          toast.success("Message sent. I'll get back to you soon.", { style: TOAST_STYLE });
           setForm({ name: '', email: '', message: '' });
         },
         (error) => {
           setLoading(false);
-          console.log(error);
-          toast.error('Something went wrong. Please try again.', {
-            style: { background: '#111', color: '#ece7e1' },
-          });
+          console.error(error);
+          toast.error('Something went wrong. Please try again.', { style: TOAST_STYLE });
         }
       );
   };
 
   return (
-    <div className="-mt-[4rem]">
-      <ToastContainer position="bottom-left" />
+    <section
+      id="contact"
+      className="relative py-28 sm:py-36 px-6 sm:px-12 border-t border-white/[0.06] overflow-hidden"
+    >
+      <SectionLabel index="08" title="Contact" />
+      <ParticleField />
+      <ToastContainer position="bottom-right" theme="light" />
 
-      {/* ── BIG DRAMATIC HEADING ── */}
-      <motion.div variants={slideIn('up', 'tween', 0.1, 0.6)} className="mb-16">
-        <p className="text-[11px] uppercase tracking-[5px] text-lime font-syne font-medium mb-3">
-          Contact
-        </p>
-        <h2 className="font-instrument italic text-text-primary text-[48px] xs:text-[64px] sm:text-[80px] md:text-[100px] leading-[0.9] tracking-tight">
-          Let's build<br />
-          <span className="text-lime">something</span> together
-        </h2>
-      </motion.div>
+      <div className="relative z-10 max-w-7xl mx-auto">
+        <div className="mb-16 sm:mb-20">
+          <p className="text-[10px] uppercase tracking-[0.35em] text-smoke font-display mb-6">
+            Contact
+          </p>
+          <h2 className="reveal-item fade-up font-display font-bold text-bone text-[13vw] sm:text-[7vw] leading-[0.86] tracking-tighter">
+            Let's build
+            <br />
+            <span className="text-transparent [-webkit-text-stroke:1px_rgba(255,255,255,0.45)]">
+              something
+            </span>{' '}
+            together
+          </h2>
+        </div>
 
-      {/* ��─ TWO COLUMN: INFO + FORM ── */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8">
-        {/* Left: contact info */}
-        <motion.div
-          variants={fadeIn('right', 'tween', 0.2, 0.8)}
-          className="lg:col-span-5 flex flex-col justify-between"
-        >
-          <div className="space-y-8">
-            {[
-              { label: 'Email', value: 'romeobourne211@gmail.com', href: 'mailto:romeobourne211@gmail.com' },
-              { label: 'Location', value: 'Lagos, Nigeria' },
-              { label: 'GitHub', value: 'github.com/romeoscript', href: 'https://github.com/romeoscript' },
-            ].map((item, i) => (
-              <div key={i} className="border-b border-white/[0.04] pb-6">
-                <p className="text-text-dim text-[11px] uppercase tracking-[4px] font-syne mb-2">
-                  {item.label}
-                </p>
-                {item.href ? (
-                  <a
-                    href={item.href}
-                    target={item.href.startsWith('mailto') ? undefined : '_blank'}
-                    rel="noopener noreferrer"
-                    className="text-text-primary text-[17px] sm:text-[20px] font-instrument italic
-                      hover:text-lime transition-colors duration-300"
-                  >
-                    {item.value}
-                  </a>
-                ) : (
-                  <p className="text-text-primary text-[17px] sm:text-[20px] font-instrument italic">
-                    {item.value}
-                  </p>
-                )}
-              </div>
-            ))}
-          </div>
-
-          {/* Availability badge */}
-          <div className="mt-10 flex items-center gap-3 p-4 rounded-2xl bg-lime/[0.06] border border-lime/10">
-            <span className="w-3 h-3 rounded-full bg-lime animate-pulse" />
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-14 lg:gap-10">
+          {/* Details */}
+          <div className="lg:col-span-5 flex flex-col justify-between">
             <div>
-              <p className="text-lime text-[14px] font-syne font-semibold">
-                Available for new projects
-              </p>
-              <p className="text-text-dim text-[12px] font-syne mt-0.5">
-                Typically responds within 24 hours
-              </p>
+              {DETAILS.map((item) => (
+                <div key={item.label} className="border-b border-white/[0.08] py-6">
+                  <p className="text-smoke text-[10px] uppercase tracking-[0.3em] font-display mb-2">
+                    {item.label}
+                  </p>
+                  {item.href ? (
+                    <a
+                      href={item.href}
+                      target={item.href.startsWith('mailto') ? undefined : '_blank'}
+                      rel="noopener noreferrer"
+                      className="hoverable text-bone text-[17px] sm:text-[20px] font-display tracking-tight hover:text-ash transition-colors break-all"
+                    >
+                      {item.value}
+                    </a>
+                  ) : (
+                    <p className="text-bone text-[17px] sm:text-[20px] font-display tracking-tight">
+                      {item.value}
+                    </p>
+                  )}
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-10 flex items-center gap-4 border border-white/[0.08] rounded-xl p-5 bg-white/[0.02]">
+              <span className="w-2.5 h-2.5 rounded-full bg-white animate-pulse shrink-0" />
+              <div>
+                <p className="text-bone text-[14px] font-display font-medium">
+                  Available for new projects
+                </p>
+                <p className="text-smoke text-[12px] font-light mt-0.5">
+                  Typically responds within 24 hours
+                </p>
+              </div>
             </div>
           </div>
-        </motion.div>
 
-        {/* Right: form */}
-        <motion.div
-          variants={fadeIn('left', 'tween', 0.3, 0.8)}
-          className="lg:col-span-7"
-        >
-          <form
-            ref={formRef}
-            onSubmit={handleSubmit}
-            className="bg-surface rounded-3xl border border-white/[0.04] p-6 sm:p-10 space-y-6"
-          >
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          {/* Form */}
+          <div className="lg:col-span-7">
+            <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col gap-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                <label className="flex flex-col">
+                  <span className="text-smoke text-[10px] uppercase tracking-[0.3em] font-display mb-1">
+                    Name
+                  </span>
+                  <input
+                    type="text"
+                    name="name"
+                    required
+                    value={form.name}
+                    onChange={handleChange}
+                    placeholder="Your name"
+                    className="field-input hoverable"
+                  />
+                </label>
+                <label className="flex flex-col">
+                  <span className="text-smoke text-[10px] uppercase tracking-[0.3em] font-display mb-1">
+                    Email
+                  </span>
+                  <input
+                    type="email"
+                    name="email"
+                    required
+                    value={form.email}
+                    onChange={handleChange}
+                    placeholder="you@company.com"
+                    className="field-input hoverable"
+                  />
+                </label>
+              </div>
+
               <label className="flex flex-col">
-                <span className="text-text-muted font-syne text-[12px] uppercase tracking-[3px] mb-3">
-                  Name
+                <span className="text-smoke text-[10px] uppercase tracking-[0.3em] font-display mb-1">
+                  Message
                 </span>
-                <input
-                  type="text"
-                  name="name"
-                  value={form.name}
+                <textarea
+                  rows="5"
+                  name="message"
+                  required
+                  value={form.message}
                   onChange={handleChange}
-                  placeholder="Your name"
-                  className="bg-dark py-4 px-5 text-text-primary rounded-xl
-                    border border-white/[0.04] focus:border-lime/30
-                    placeholder:text-text-dim/40 font-syne text-[15px] font-light
-                    transition-colors duration-300 outline-none"
+                  placeholder="Tell me about your project…"
+                  className="field-input hoverable"
                 />
               </label>
-              <label className="flex flex-col">
-                <span className="text-text-muted font-syne text-[12px] uppercase tracking-[3px] mb-3">
-                  Email
-                </span>
-                <input
-                  type="email"
-                  name="email"
-                  value={form.email}
-                  onChange={handleChange}
-                  placeholder="Your email"
-                  className="bg-dark py-4 px-5 text-text-primary rounded-xl
-                    border border-white/[0.04] focus:border-lime/30
-                    placeholder:text-text-dim/40 font-syne text-[15px] font-light
-                    transition-colors duration-300 outline-none"
-                />
-              </label>
-            </div>
 
-            <label className="flex flex-col">
-              <span className="text-text-muted font-syne text-[12px] uppercase tracking-[3px] mb-3">
-                Message
-              </span>
-              <textarea
-                rows="5"
-                name="message"
-                value={form.message}
-                onChange={handleChange}
-                placeholder="Tell me about your project..."
-                className="bg-dark py-4 px-5 text-text-primary rounded-xl
-                  border border-white/[0.04] focus:border-lime/30
-                  placeholder:text-text-dim/40 font-syne text-[15px] font-light
-                  resize-none transition-colors duration-300 outline-none"
-              />
-            </label>
+              <div className="flex items-center justify-between gap-6 pt-4">
+                <Magnetic strength={0.3}>
+                  <button
+                    type="submit"
+                    disabled={loading}
+                    className="inline-flex items-center justify-center w-32 h-32 sm:w-40 sm:h-40 rounded-full border border-white/20 bg-white/5 backdrop-blur-sm font-display font-bold text-[11px] uppercase tracking-[0.2em] text-bone hover:bg-white hover:text-black transition-colors duration-300 disabled:opacity-50"
+                  >
+                    {loading ? 'Sending…' : 'Send it'}
+                  </button>
+                </Magnetic>
 
-            <div className="flex items-center justify-between pt-2">
-              <button
-                type="submit"
-                className="group flex items-center gap-3 px-8 py-4 rounded-full
-                  bg-lime text-dark font-syne font-bold text-[13px] uppercase tracking-[2px]
-                  hover:bg-text-primary transition-colors duration-300"
-                onMouseOver={() => {
-                  document.querySelector('.contact-btn')?.setAttribute('src', sendHover);
-                }}
-                onMouseOut={() => {
-                  document.querySelector('.contact-btn')?.setAttribute('src', send);
-                }}
-              >
-                {loading ? 'Sending...' : 'Send Message'}
-                <img
-                  src={send}
-                  alt="send"
-                  className="contact-btn w-5 h-5 object-contain"
-                />
-              </button>
-              <span className="hidden sm:block text-text-dim text-[11px] font-syne tracking-wide">
-                All fields required
-              </span>
-            </div>
-          </form>
-        </motion.div>
+                <p className="text-smoke text-[10px] uppercase tracking-[0.25em] font-display text-right">
+                  All fields
+                  <br />
+                  required
+                </p>
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 
-export default SectionWrapper(Contact, 'contact');
+export default Contact;

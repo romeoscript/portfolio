@@ -1,144 +1,136 @@
-import { useEffect, useRef } from 'react';
-import { motion } from 'framer-motion';
-import gsap from 'gsap';
+import { useEffect, useState } from 'react';
 
-const MARQUEE_TEXT = 'FULLSTACK DEVELOPER \u00B7 CEO \u00B7 UI ENGINEER \u00B7 CREATIVE TECHNOLOGIST \u00B7 ';
+const MARQUEE_TEXT =
+  'FULLSTACK DEVELOPER · CEO · UI ENGINEER · CREATIVE TECHNOLOGIST · ';
 
 const Hero = () => {
-  const containerRef = useRef(null);
+  const [ready, setReady] = useState(false);
 
+  // Hold the type reveal until the preloader has cleared the viewport.
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        '.hero-line',
-        { scaleX: 0 },
-        { scaleX: 1, duration: 1.5, delay: 1.8, ease: 'power3.out' }
-      );
-    }, containerRef);
-    return () => ctx.revert();
+    const timer = setTimeout(() => setReady(true), 1600);
+    return () => clearTimeout(timer);
   }, []);
 
+  const active = ready ? 'active' : '';
+
   return (
-    <section
-      ref={containerRef}
-      className="relative w-full min-h-screen flex flex-col justify-between overflow-hidden bg-dark"
+    <header
+      id="index"
+      className="relative min-h-screen w-full flex flex-col justify-between overflow-hidden"
     >
-      {/* Background grid */}
-      <div
-        className="absolute inset-0 opacity-[0.03]"
-        style={{
-          backgroundImage:
-            'linear-gradient(rgba(200,255,0,0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(200,255,0,0.4) 1px, transparent 1px)',
-          backgroundSize: '60px 60px',
-        }}
-      />
+      {/* Parallax field */}
+      <div className="absolute inset-0 z-0 pointer-events-none" data-parallax="0.25">
+        <div
+          className="absolute inset-0 opacity-[0.07]"
+          style={{
+            backgroundImage:
+              'linear-gradient(rgba(255,255,255,0.35) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.35) 1px, transparent 1px)',
+            backgroundSize: '80px 80px',
+          }}
+        />
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[700px] max-w-[120vw] rounded-full bg-white/[0.035] blur-[140px]" />
+      </div>
+      <div className="absolute inset-0 z-0 bg-gradient-to-t from-ink via-transparent to-transparent pointer-events-none" />
 
-      {/* Corner accent */}
-      <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-lime/[0.03] rounded-full blur-[120px] translate-x-1/2 -translate-y-1/2" />
-
-      {/* ── TOP BAR ── */}
-      <div className="relative z-10 flex justify-between items-center px-6 sm:px-16 pt-28 sm:pt-32">
-        <motion.p
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="text-[11px] sm:text-[13px] uppercase tracking-[5px] text-text-muted font-syne"
+      {/* Top row */}
+      <div className="relative z-10 flex justify-between items-center px-6 sm:px-12 pt-28 sm:pt-32">
+        <p
+          className={`text-[10px] sm:text-[11px] uppercase tracking-[0.35em] text-smoke font-display transition-opacity duration-700 ${
+            ready ? 'opacity-100' : 'opacity-0'
+          }`}
         >
-          Portfolio / 2024
-        </motion.p>
-        <motion.div
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="flex items-center gap-2"
+          Portfolio / {new Date().getFullYear()}
+        </p>
+        <div
+          className={`flex items-center gap-2 transition-opacity duration-700 delay-100 ${
+            ready ? 'opacity-100' : 'opacity-0'
+          }`}
         >
-          <span className="w-2 h-2 rounded-full bg-lime animate-pulse" />
-          <span className="text-[11px] sm:text-[13px] uppercase tracking-[5px] text-text-muted font-syne">
+          <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+          <span className="text-[10px] sm:text-[11px] uppercase tracking-[0.35em] text-smoke font-display">
             Open to work
           </span>
-        </motion.div>
+        </div>
       </div>
 
-      {/* ── MAIN NAME ── */}
-      <div className="relative z-10 flex-1 flex flex-col justify-center px-6 sm:px-16 -mt-8">
-        {/* First name */}
-        <div className="overflow-hidden">
-          <motion.h1
-            initial={{ y: '110%' }}
-            animate={{ y: 0 }}
-            transition={{ duration: 1.2, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className="font-instrument text-text-primary font-normal
-              text-[16vw] sm:text-[14vw] md:text-[12vw] lg:text-[10vw]
-              leading-[0.85] tracking-[-0.04em]"
+      {/* Name */}
+      <div className="relative z-10 flex-1 flex flex-col justify-center px-6 sm:px-12 py-16">
+        <h1 className="font-display font-bold leading-[0.82] tracking-tighter text-bone text-[19vw] md:text-[15vw]">
+          <span className={`split-line ${active}`}>
+            <span>ROMEO</span>
+          </span>
+          <span
+            className={`split-line ${active}`}
+            style={{ transitionDelay: '0.12s' }}
           >
-            Romeo
-          </motion.h1>
-        </div>
+            <span className="block text-transparent [-webkit-text-stroke:1px_rgba(255,255,255,0.45)]">
+              EZEUGWU
+            </span>
+          </span>
+        </h1>
 
-        {/* Last name - offset right */}
-        <div className="overflow-hidden sm:ml-[15vw] md:ml-[20vw]">
-          <motion.h1
-            initial={{ y: '110%' }}
-            animate={{ y: 0 }}
-            transition={{ duration: 1.2, delay: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            className="font-instrument italic text-lime
-              text-[16vw] sm:text-[14vw] md:text-[12vw] lg:text-[10vw]
-              leading-[0.85] tracking-[-0.04em]"
-          >
-            Ezeugwu
-          </motion.h1>
-        </div>
-
-        {/* Divider line */}
         <div
-          className="hero-line mt-10 h-[1px] bg-gradient-to-r from-lime/40 via-lime/20 to-transparent origin-left"
+          className={`mt-10 h-px bg-gradient-to-r from-white/40 to-transparent origin-left transition-transform duration-[1400ms] ease-out-expo ${
+            ready ? 'scale-x-100' : 'scale-x-0'
+          }`}
+          style={{ transitionDelay: '0.6s' }}
         />
 
-        {/* Subtitle row */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.4 }}
-          className="mt-8 flex flex-col sm:flex-row sm:items-end justify-between gap-6"
+        <div
+          className={`mt-8 flex flex-col sm:flex-row sm:items-end justify-between gap-8 transition-all duration-1000 ${
+            ready ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+          }`}
+          style={{ transitionDelay: '0.8s' }}
         >
-          <p className="text-text-muted text-[15px] sm:text-[17px] leading-[1.7] max-w-lg font-syne font-light">
-            Building digital products that live at the intersection of
-            <span className="text-text-primary"> engineering</span>,
-            <span className="text-text-primary"> design</span>, and
-            <span className="text-lime"> business strategy</span>.
+          <p className="text-ash text-[15px] sm:text-[18px] leading-[1.7] max-w-xl font-light">
+            Building digital products at the intersection of{' '}
+            <span className="text-bone">engineering</span>,{' '}
+            <span className="text-bone">design</span>, and{' '}
+            <span className="text-bone">business strategy</span>.
           </p>
 
           <a
             href="#about"
-            className="group inline-flex items-center gap-3 text-[12px] uppercase tracking-[4px] text-text-muted hover:text-lime transition-colors font-syne"
+            className="hoverable group inline-flex items-center gap-3 text-[10px] uppercase tracking-[0.3em] text-smoke hover:text-bone transition-colors font-display shrink-0"
           >
-            Scroll down
-            <svg className="w-4 h-4 rotate-90 group-hover:translate-y-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            Scroll
+            <svg
+              className="w-4 h-4 rotate-90 group-hover:translate-y-1 transition-transform"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={1.5}
+                d="M17 8l4 4m0 0l-4 4m4-4H3"
+              />
             </svg>
           </a>
-        </motion.div>
+        </div>
       </div>
 
-      {/* ── BOTTOM MARQUEE ── */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8, delay: 2 }}
-        className="relative z-10 border-t border-white/[0.04] py-4 overflow-hidden"
+      {/* Bottom ticker */}
+      <div
+        className={`relative z-10 border-t border-white/[0.06] py-4 overflow-hidden transition-opacity duration-1000 ${
+          ready ? 'opacity-100' : 'opacity-0'
+        }`}
+        style={{ transitionDelay: '1s' }}
       >
         <div className="marquee-track">
           {[...Array(4)].map((_, i) => (
             <span
               key={i}
-              className="text-[11px] uppercase tracking-[6px] text-text-dim font-syne whitespace-nowrap px-4"
+              className="text-[10px] uppercase tracking-[0.4em] text-smoke font-display whitespace-nowrap px-4"
             >
               {MARQUEE_TEXT}
             </span>
           ))}
         </div>
-      </motion.div>
-    </section>
+      </div>
+    </header>
   );
 };
 

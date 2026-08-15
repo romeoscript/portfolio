@@ -1,106 +1,170 @@
-import React from 'react';
-import { motion } from 'framer-motion';
 import { services } from '../constants';
-import { fadeIn, textVariant } from '../utils/motion';
-import { SectionWrapper } from '../hoc';
+import { main } from '../assets';
+import SectionLabel from './fx/SectionLabel';
 
-const About = () => {
-  return (
-    <div>
-      {/* ── HEADER ROW ── */}
-      <div className="flex items-end justify-between mb-16">
-        <motion.div variants={textVariant()}>
-          <p className="text-[11px] uppercase tracking-[5px] text-lime font-syne font-medium mb-3">
-            About
-          </p>
-          <h2 className="font-instrument italic text-text-primary text-[40px] xs:text-[52px] sm:text-[64px] md:text-[80px] leading-[0.95] tracking-tight">
-            Who I am
-          </h2>
-        </motion.div>
-        <motion.span
-          variants={fadeIn('', '', 0.2, 0.6)}
-          className="hidden sm:block font-instrument italic text-[120px] md:text-[160px] leading-none text-white/[0.02] select-none -mb-4"
-        >
-          01
-        </motion.span>
+const STATS = [
+  { target: 7, suffix: '+', label: 'Years' },
+  { target: 20, suffix: '+', label: 'Projects' },
+  { target: 8, suffix: '+', label: 'Clients' },
+];
+
+const SERVICE_ICONS = {
+  ai: (
+    <>
+      <rect x="4" y="4" width="16" height="16" rx="2" />
+      <rect x="9" y="9" width="6" height="6" />
+      <path d="M9 2v2M15 2v2M9 20v2M15 20v2M2 9h2M2 15h2M20 9h2M20 15h2" />
+    </>
+  ),
+  automation: (
+    <>
+      <rect x="3" y="3" width="7" height="7" rx="1.5" />
+      <rect x="14" y="14" width="7" height="7" rx="1.5" />
+      <path d="M10 6.5h4.5A2.5 2.5 0 0 1 17 9v5" />
+      <path d="M14 17.5H9.5A2.5 2.5 0 0 1 7 15v-5" />
+    </>
+  ),
+  frontend: (
+    <>
+      <rect x="3" y="4" width="18" height="15" rx="2" />
+      <path d="M3 9h18M8 9v10" />
+    </>
+  ),
+  backend: (
+    <>
+      <ellipse cx="12" cy="6" rx="8" ry="3" />
+      <path d="M4 6v6c0 1.66 3.58 3 8 3s8-1.34 8-3V6" />
+      <path d="M4 12v6c0 1.66 3.58 3 8 3s8-1.34 8-3v-6" />
+    </>
+  ),
+  opensource: (
+    <>
+      <circle cx="12" cy="12" r="3" />
+      <path d="M12 2v7M12 15v7" />
+      <circle cx="5" cy="19" r="2.5" />
+      <path d="M5 16.5V8a3 3 0 0 1 3-3h1" />
+    </>
+  ),
+  prototyping: (
+    <>
+      <path d="M12 2 2 7l10 5 10-5-10-5Z" />
+      <path d="m2 17 10 5 10-5" />
+      <path d="m2 12 10 5 10-5" />
+    </>
+  ),
+};
+
+const STATEMENT =
+  'I build high-performance web applications end to end, and I keep pushing on what a browser can be made to do.';
+
+const About = () => (
+  <section id="about" className="relative py-28 sm:py-36 px-6 sm:px-12 border-t border-white/[0.06]">
+    <SectionLabel index="01" title="Profile" />
+
+    <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-16 md:gap-20 items-start">
+      {/* Sticky column */}
+      <div className="md:w-[38%] md:sticky md:top-[18vh]">
+        <p className="text-[10px] uppercase tracking-[0.35em] text-smoke font-display mb-6">
+          About
+        </p>
+        <h2 className="font-display font-bold text-bone text-[13vw] md:text-[5vw] leading-[0.88] tracking-tighter mb-8">
+          Who
+          <br />I am
+        </h2>
+        <p className="text-ash text-[15px] sm:text-[16px] leading-[1.8] font-light max-w-md">
+          A full-stack and open-source engineer with deep footing on both sides of the
+          stack. I ship production systems, and I contribute upstream to the tools I build
+          with — if you're building something ambitious, let's talk.
+        </p>
+
+        <div className="mt-12 grid grid-cols-3 gap-4 border-t border-white/[0.08] pt-8">
+          {STATS.map((stat) => (
+            <div key={stat.label}>
+              <div className="font-display font-bold text-bone text-[34px] sm:text-[44px] leading-none tracking-tighter">
+                <span className="counter" data-target={stat.target}>
+                  0
+                </span>
+                {stat.suffix}
+              </div>
+              <p className="text-smoke text-[10px] uppercase tracking-[0.25em] font-display mt-3">
+                {stat.label}
+              </p>
+            </div>
+          ))}
+        </div>
       </div>
 
-      {/* ── ASYMMETRIC TWO-COLUMN ── */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-6">
-        {/* Left: large descriptive text */}
-        <motion.div
-          variants={fadeIn('right', 'tween', 0.1, 0.8)}
-          className="lg:col-span-7"
-        >
-          <p className="text-text-muted text-[18px] sm:text-[22px] leading-[1.7] font-syne font-light">
-            I'm a <span className="text-text-primary">passionate full-stack developer</span> with
-            deep understanding of both front-end and back-end. I specialize in building
-            <span className="text-lime"> high-performance web applications</span> and am constantly
-            pushing the boundaries of what's possible on the web.
-          </p>
-          <p className="text-text-muted text-[16px] sm:text-[17px] leading-[1.8] font-syne font-light mt-6">
-            Currently seeking full-stack opportunities where I can contribute to meaningful
-            products. If you're building something ambitious, let's talk.
-          </p>
-
-          {/* ── STATS ROW ── */}
-          <div className="mt-12 grid grid-cols-3 gap-6">
-            {[
-              { num: '3+', label: 'Years' },
-              { num: '20+', label: 'Projects' },
-              { num: '8+', label: 'Clients' },
-            ].map((stat, i) => (
-              <motion.div
-                key={i}
-                variants={fadeIn('up', 'spring', 0.3 + i * 0.1, 0.6)}
-                className="border-t border-white/[0.06] pt-5"
-              >
-                <span className="font-instrument italic text-lime text-[40px] sm:text-[56px] leading-none">
-                  {stat.num}
-                </span>
-                <p className="text-text-dim text-[11px] uppercase tracking-[3px] font-syne mt-2">
-                  {stat.label}
-                </p>
-              </motion.div>
-            ))}
+      {/* Scrolling column */}
+      <div className="md:w-[62%] flex flex-col gap-20 md:gap-28 md:pt-24 w-full">
+        <div className="reveal-item fade-scale group relative aspect-[4/5] sm:aspect-[16/11] rounded-lg overflow-hidden hoverable">
+          <img
+            src={main}
+            alt="Romeo Ezeugwu"
+            className="absolute inset-0 w-full h-full object-cover object-top img-zoom-bw"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+          <div className="absolute bottom-6 left-6 z-10">
+            <h3 className="font-display font-bold text-[20px] text-bone tracking-tight">
+              Romanus Chukwuemeka Ezeugwu
+            </h3>
+            <p className="text-[11px] uppercase tracking-[0.25em] text-ash font-display mt-1">
+              Lagos, Nigeria
+            </p>
           </div>
-        </motion.div>
+        </div>
 
-        {/* Right: service cards stacked */}
-        <motion.div
-          variants={fadeIn('left', 'tween', 0.3, 0.8)}
-          className="lg:col-span-5 lg:pl-8"
-        >
-          <p className="text-[11px] uppercase tracking-[4px] text-text-dim font-syne mb-6">
-            What I Do
+        <p className="word-reveal text-[22px] sm:text-[34px] md:text-[40px] font-light leading-[1.35] text-ash tracking-tight">
+          {STATEMENT.split(' ').map((word, i) => (
+            <span key={`${word}-${i}`} style={{ transitionDelay: `${i * 0.04}s` }}>
+              {word}&nbsp;
+            </span>
+          ))}
+        </p>
+
+        <div>
+          <p className="text-[10px] uppercase tracking-[0.35em] text-smoke font-display mb-8">
+            What I do
           </p>
-          <div className="flex flex-col gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-white/[0.08] border border-white/[0.08] rounded-lg overflow-hidden">
             {services.map((service, index) => (
-              <motion.div
+              <div
                 key={service.title}
-                variants={fadeIn('up', 'spring', 0.4 + index * 0.1, 0.6)}
-                className="group flex items-center gap-5 p-5 rounded-2xl bg-surface border border-white/[0.04]
-                  hover:border-lime/20 hover:bg-surface-2 transition-all duration-400 cursor-default"
+                /* An odd count would leave a gap-coloured empty cell, so the
+                   last card spans the row instead. */
+                className={`reveal-item fade-up group bg-ink hover:bg-ink-3 transition-colors duration-500 p-7 flex items-start gap-5 hoverable ${
+                  services.length % 2 === 1 && index === services.length - 1
+                    ? 'sm:col-span-2'
+                    : ''
+                }`}
+                style={{ transitionDelay: `${index * 0.08}s` }}
               >
-                <div className="w-12 h-12 rounded-xl bg-limeMuted flex items-center justify-center flex-shrink-0
-                  group-hover:bg-lime/20 transition-colors duration-300">
-                  <img src={service.icon} alt={service.title} className="w-6 h-6 object-contain opacity-70" />
-                </div>
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                  className="w-6 h-6 text-ash opacity-60 group-hover:opacity-100 group-hover:text-bone transition-all duration-500 shrink-0 mt-0.5"
+                >
+                  {SERVICE_ICONS[service.id]}
+                </svg>
                 <div className="flex-1">
-                  <h3 className="text-text-primary text-[15px] font-syne font-semibold tracking-wide">
+                  <h3 className="font-display font-medium text-bone text-[15px] tracking-tight">
                     {service.title}
                   </h3>
                 </div>
-                <span className="text-text-dim text-[12px] font-instrument italic opacity-0 group-hover:opacity-100 transition-opacity">
+                <span className="text-smoke text-[11px] font-display">
                   0{index + 1}
                 </span>
-              </motion.div>
+              </div>
             ))}
           </div>
-        </motion.div>
+        </div>
       </div>
     </div>
-  );
-};
+  </section>
+);
 
-export default SectionWrapper(About, 'about');
+export default About;

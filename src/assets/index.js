@@ -7,6 +7,7 @@ import logo from './logo/logo-black.png';
 import logotext from './logo/logo-text-black.png';
 
 import shaq from './personal/shaq.png';
+import main from './personal/main.jpg';
 
 import backend from './icons/backend.png';
 import ux from './icons/ux.png';
@@ -56,6 +57,8 @@ import noirotc from './projects/noirotc.png';
 import gettruckdispatch from './projects/gettruckdispatch.png';
 import getclip from './projects/getclip.png';
 import otaku from './projects/otaku.png';
+import swiftagents from './projects/swiftagents.jpg';
+import interlinklabs from './projects/interlinklabs.jpg';
 
 export {
   bwmap,
@@ -65,6 +68,7 @@ export {
   logo,
   logotext,
   shaq,
+  main,
   backend,
   ux,
   frontend,
@@ -109,4 +113,6 @@ export {
   gettruckdispatch,
   getclip,
   otaku,
+  swiftagents,
+  interlinklabs,
 };
