@@ -55,7 +55,7 @@ const SpeakingPage = () => {
               On stage
             </h1>
             <p className="text-ash text-[15px] sm:text-[17px] leading-[1.7] font-light mt-7">
-              I speak on open source, AI engineering and breaking into tech — from campus
+              I speak on open source, AI engineering and breaking into tech, from campus
               keynotes to international cohorts. Available for talks, workshops and panels.
             </p>
 

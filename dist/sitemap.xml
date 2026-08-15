@@ -1,22 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://romeoscript.tech/</loc>
-    <lastmod>2024-12-22</lastmod>
+    <lastmod>2026-08-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://romeoscript.tech/images/romanus-ezeugwu.jpg</image:loc>
+      <image:title>Romanus Chukwuemeka Ezeugwu (Romeoscript)</image:title>
+      <image:caption>Romanus Chukwuemeka Ezeugwu, Senior Software Engineer and CEO of Qubic Digital Services</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://romeoscript.tech/images/romanus-ezeugwu-square.jpg</image:loc>
+      <image:title>Romanus Chukwuemeka Ezeugwu, portrait headshot</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://romeoscript.tech/images/romanus-ezeugwu-4x3.jpg</image:loc>
+      <image:title>Romanus Chukwuemeka Ezeugwu, AI and software engineer</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://romeoscript.tech/images/romanus-ezeugwu-og.jpg</image:loc>
+      <image:title>Romanus Chukwuemeka Ezeugwu (Romeoscript), CEO of Qubic Digital Services</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://romeoscript.tech/speaking</loc>
+    <lastmod>2026-08-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://romeoscript.tech/images/romanus-ezeugwu-takeoff-opensourcenest-talk-16x9.jpg</image:loc>
+      <image:title>Romanus Chukwuemeka Ezeugwu speaking at TAKEOFF by OpenSourceNest</image:title>
+      <image:caption>Keynote "Beyond Free: Unlocking Paid Opportunities in Open Source" at TAKEOFF by OpenSourceNest, backed by GitHub, The Block Hive, Nsukka</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://romeoscript.tech/images/romanus-ezeugwu-takeoff-opensourcenest-talk-4x3.jpg</image:loc>
+      <image:title>Romanus Chukwuemeka Ezeugwu at TAKEOFF by OpenSourceNest</image:title>
+      <image:caption>Romanus Chukwuemeka Ezeugwu presenting at TAKEOFF, an open-source event backed by GitHub</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://romeoscript.tech/images/romanus-ezeugwu-takeoff-opensourcenest-stage.jpg</image:loc>
+      <image:title>Romanus Chukwuemeka Ezeugwu on stage at TAKEOFF by OpenSourceNest</image:title>
+      <image:caption>Speaking on paid opportunities in open source at The Block Hive, Nsukka</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://romeoscript.tech/images/romanus-ezeugwu-takeoff-opensourcenest-slides.jpg</image:loc>
+      <image:title>Romanus Chukwuemeka Ezeugwu presenting at TAKEOFF by OpenSourceNest</image:title>
+      <image:caption>Presenting open-source community management at TAKEOFF, Nsukka</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://romeoscript.tech/images/romanus-ezeugwu-takeoff-opensourcenest-mic.jpg</image:loc>
+      <image:title>Romanus Chukwuemeka Ezeugwu addressing the TAKEOFF audience</image:title>
+      <image:caption>Addressing the audience at TAKEOFF by OpenSourceNest, backed by GitHub</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://romeoscript.tech/images/romanus-ezeugwu-takeoff-opensourcenest-portrait.jpg</image:loc>
+      <image:title>Romanus Chukwuemeka Ezeugwu mid-talk at TAKEOFF</image:title>
+      <image:caption>Romeoscript speaking at TAKEOFF by OpenSourceNest, Nsukka</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://romeoscript.tech/images/romanus-ezeugwu-takeoff-opensourcenest-bw.jpg</image:loc>
+      <image:title>Romanus Chukwuemeka Ezeugwu speaking at TAKEOFF by OpenSourceNest</image:title>
+      <image:caption>Open-source event backed by GitHub at The Block Hive, Nsukka</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://romeoscript.tech/bio</loc>
-    <lastmod>2024-12-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://romeoscript.tech/about</loc>
-    <lastmod>2024-12-22</lastmod>
+    <lastmod>2026-08-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 </urlset>
-

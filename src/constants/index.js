@@ -46,7 +46,7 @@ export const navLinks = [
   },
 ];
 
-// `id` maps to an inline SVG in About.jsx — see SERVICE_ICONS there.
+// `id` maps to an inline SVG in About.jsx, see SERVICE_ICONS there.
 const services = [
   {
     id: "ai",
@@ -109,10 +109,10 @@ const openSourceContributions = [
   },
 ];
 
-// Talks, workshops and podcast appearances — newest first.
+// Talks, workshops and podcast appearances, newest first.
 const speaking = [
   {
-    event: "TechBridge UK — Live Class & Q&A",
+    event: "TechBridge UK: Live Class & Q&A",
     topic:
       "Breaking into tech: portfolios, SQL, stakeholder communication, and what hiring managers actually look for.",
     role: "Instructor",
@@ -122,7 +122,7 @@ const speaking = [
     url: "https://techbridgeacademy.uk",
   },
   {
-    event: "TAKEOFF — OpenSourceNest",
+    event: "TAKEOFF by OpenSourceNest",
     topic: "Beyond Free: Unlocking Paid Opportunities in Open Source.",
     role: "Speaker",
     date: "Apr 2026",
@@ -141,7 +141,7 @@ const speaking = [
   },
   {
     event: "Solana Students Africa",
-    topic: "Metadata + LLM Integration — instructor on the Build in Public track.",
+    topic: "Metadata + LLM Integration, instructor on the Build in Public track.",
     role: "Instructor",
     date: "Sep 2025",
     year: "2025",
@@ -158,7 +158,7 @@ const speaking = [
     url: "https://gdg.community.dev/gdg-on-campus-university-of-nigeria-nsukka-nigeria/",
   },
   {
-    event: "FLOSS Weekly 739 — TWiT.tv",
+    event: "FLOSS Weekly 739 on TWiT.tv",
     topic:
       "Big AI questions nobody else is asking, with hosts Doc Searls and Katherine Druckman.",
     role: "Podcast Guest",
@@ -183,7 +183,7 @@ const award = {
 const openSourceProjects = [
   {
     repo: "agent-twitter-client",
-    description: "A Twitter client for agents — no API key necessary.",
+    description: "A Twitter client for agents, no API key necessary.",
     language: "TypeScript",
     stars: 81,
     forks: 14,

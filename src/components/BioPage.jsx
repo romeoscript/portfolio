@@ -26,14 +26,14 @@ const EXPERTISE = [
 
 const FACTS = [
   { label: 'Also known as', value: 'Romeo / Romeoscript' },
-  { label: 'Role', value: 'CEO, Qubic Digital Services | LinkedTrust' },
-  { label: 'Based in', value: 'Nigeria — expanding to the UK' },
-  { label: 'Specialization', value: 'Frontend Engineering' },
+  { label: 'Role', value: 'Senior Software Engineer & Founder' },
+  { label: 'Based in', value: 'Nigeria' },
+  { label: 'Specialization', value: 'Frontend & AI Engineering' },
 ];
 
 const ACHIEVEMENTS = [
-  'Lead Frontend Engineer at Nanocodes — built TechVerve LMS',
-  'HNG Internship 9 finalist — 300 of 18,000 participants',
+  'Led frontend for a learning platform serving hundreds of students',
+  'HNG Internship 9 finalist, 300 of 18,000 participants',
   'GAIN Hackathon finalist with Team GETO AI',
   'Featured on the FLOSS Weekly podcast (TWiT.tv)',
   'Speaker at Google Developer Groups',
@@ -42,20 +42,16 @@ const ACHIEVEMENTS = [
 
 const CHAPTERS = [
   {
-    title: 'Early journey',
-    body: `My route into technology started with borrowed resources and stubbornness. No laptop, no smartphone — I borrowed my cousin's phone to research and study code. I taught myself HTML, CSS and JavaScript on SoloLearn, working until the battery died, then waiting for it to charge to keep going. That shaped how I still work: find the blocker, find the solution, execute.`,
-  },
-  {
     title: 'Professional impact',
-    body: `As Lead Frontend Engineer at Nanocodes I shaped both the product and the people around it. I led development of the company's flagship learning management system, TechVerve, serving hundreds of students, and built their marketplace and blog — the technical foundation still running their business today. Beyond engineering, I worked with marketing to shape acquisition funnels: analytics, SEO, and the experiences that turned visitors into active users.`,
+    body: `Leading frontend has always meant shaping both the product and the people around it. I drove development of a learning management system serving hundreds of students, and built the marketplace and blog around it: a technical foundation that is still running today. Beyond engineering, I worked with marketing to shape acquisition funnels: analytics, SEO, and the experiences that turned visitors into active users.`,
   },
   {
     title: 'Mentorship & community',
-    body: `What defined my time at Nanocodes wasn't only the code — it was the developers I mentored. In 2022 I organised trips to GDG DevFest Enugu so students could meet real practitioners and see how the industry actually works. That work continues outside company walls, through open-source infrastructure and a voice in the wider technology community.`,
+    body: `What defined those years wasn't only the code. It was the developers I mentored. In 2022 I organised trips to GDG DevFest Enugu so students could meet real practitioners and see how the industry actually works. That work continues today, through open-source infrastructure and a voice in the wider technology community.`,
   },
   {
     title: "Recognition & what's next",
-    body: `As CEO of Qubic Digital Services I'm building digital infrastructure for businesses across Africa, helping SMEs establish a real digital presence, with plans to expand into the UK market. The focus is privacy-first, user-centric platforms and scalable frontend systems — plus workshops that close skill gaps, collaborations that help underrepresented young people build open-source portfolios, and university partnerships exploring privacy-preserving and decentralised architectures.`,
+    body: `I'm building digital infrastructure for businesses across Africa, helping small and medium businesses establish a real digital presence, with plans to expand into the UK market. The focus is privacy-first, user-centric platforms and scalable frontend systems, plus workshops that close skill gaps, collaborations that help underrepresented young people build open-source portfolios, and university partnerships exploring privacy-preserving and decentralised architectures.`,
   },
 ];
 
@@ -66,7 +62,7 @@ const STATS = [
 ];
 
 const INTRO =
-  'Senior Software Engineer specialising in frontend, and CEO of Qubic Digital Services. I started out borrowing a phone to learn HTML, CSS and JavaScript — turning constraints into creativity, and eventually into production systems that serve thousands of people.';
+  'Senior Software Engineer specialising in frontend and AI systems. I build production platforms that serve thousands of people, from LLM orchestration and real-time inference through to the interfaces people actually touch.';
 
 const BioPage = () => {
   useScrollReveal();
@@ -99,7 +95,7 @@ const BioPage = () => {
                   Romanus Chukwuemeka Ezeugwu
                 </h2>
                 <p className="text-[11px] uppercase tracking-[0.25em] text-ash font-display mt-1">
-                  CEO & Senior Software Engineer
+                  Senior Software Engineer & Founder
                 </p>
               </div>
             </div>

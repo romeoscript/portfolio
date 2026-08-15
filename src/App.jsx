@@ -5,6 +5,7 @@ import SpeakingPage from './components/SpeakingPage';
 import Preloader from './components/fx/Preloader';
 import Cursor from './components/fx/Cursor';
 import ScrollProgress from './components/fx/ScrollProgress';
+import usePageMeta from './hooks/usePageMeta';
 
 /** Route changes should start at the top, not wherever the last page was. */
 const ScrollToTop = () => {
@@ -18,6 +19,12 @@ const ScrollToTop = () => {
   return null;
 };
 
+/** Keeps title, description and canonical in step with the current route. */
+const PageMeta = () => {
+  usePageMeta();
+  return null;
+};
+
 const App = () => (
   <BrowserRouter>
     <Preloader />
@@ -27,6 +34,7 @@ const App = () => (
 
     <div className="relative z-0">
       <ScrollToTop />
+      <PageMeta />
       <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />} />

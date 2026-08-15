@@ -42,7 +42,7 @@ const Experience = () => (
         </svg>
 
         <p className="text-ash text-[15px] leading-[1.8] font-light max-w-sm mb-10">
-          Seven years shipping production systems — AI platforms, telecom
+          Seven years shipping production systems across AI platforms, telecom
           infrastructure, federal data pipelines and healthtech.
         </p>
 

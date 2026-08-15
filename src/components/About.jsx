@@ -74,7 +74,7 @@ const About = () => (
         <p className="text-ash text-[15px] sm:text-[16px] leading-[1.8] font-light max-w-md">
           A full-stack and open-source engineer with deep footing on both sides of the
           stack. I ship production systems, and I contribute upstream to the tools I build
-          with — if you're building something ambitious, let's talk.
+          with. If you're building something ambitious, let's talk.
         </p>
 
         <div className="mt-12 grid grid-cols-3 gap-4 border-t border-white/[0.08] pt-8">

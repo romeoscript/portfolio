@@ -187,8 +187,8 @@ const Projects = () => {
                 Projects
               </h2>
               <p className="text-ash text-[14px] sm:text-[16px] leading-[1.7] font-light mt-8 max-w-sm">
-                Products shipped across fintech, social, logistics and AI —
-                different domains, same obsession with the details.
+                Products shipped across fintech, social, logistics and AI.
+                Different domains, same obsession with the details.
               </p>
               <p className="hidden lg:flex items-center gap-3 mt-10 text-[10px] uppercase tracking-[0.3em] text-smoke font-display">
                 Keep scrolling

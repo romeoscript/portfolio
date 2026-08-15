@@ -1,2 +1,5 @@
 node_modules
 .DS_Store
+
+# Full-resolution photo originals. Derivatives in public/images are what ship.
+source-images
